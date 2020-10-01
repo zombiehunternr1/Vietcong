@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    CharacterController characterController;
-
-    public float speed = 6.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-
-    private Vector3 moveDirection = Vector3.zero;
+    public float _moveSpeed = 15f;
+    private CharacterController controller;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        if (characterController.isGrounded)
-        { 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection *= speed;
+        Direction();
+    }
 
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-            }
+    private void Direction()
+    {
+        //Gets the direction of the players input
+        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        //This prevents going faster when running diagonically
+        if (direction.sqrMagnitude > 1f)
+        {
+            direction = direction.normalized; 
         }
-        moveDirection.y -= gravity * Time.deltaTime;
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        //Multiplies the movement speed and adds the speed to the charactercontroller with the new directions
+        Vector3 velocity = direction * _moveSpeed;
+        controller.Move(velocity * Time.deltaTime);
+        Vector3 facingrotation = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
+
+        //This condition prevents from spamming "Look rotation viewing vector is zero" when not moving.
+        if (facingrotation != Vector3.zero)
+        {
+            transform.forward = facingrotation;
+        }   
     }
 }
