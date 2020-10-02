@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
-    // force is how forcefully we will push the player away from the collision point.
-    public float force = 400;
+    public float force;
+    public Rigidbody rb;
+    Vector3 pushDirection;
 
-    void OnCollisionEnter(Collision collision)
+    void Start()
     {
-        // Calculate Angle Between the collision point and the player
-        Vector3 dir = collision.contacts[0].point - transform.position;
-        // We then get the opposite (-Vector3) and normalize it
-        dir = -dir.normalized;
-        // And finally we add force in the direction of dir and multiply it by force. 
-        // This will push back the player
-        GetComponent<Rigidbody>().AddForce(dir * force);  
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void OnCollisionEnter(Collision col)
+    { 
+        if(col.collider.name == "Player")
+        {
+            pushDirection = rb.transform.position - col.transform.position;
+            rb.AddForce(pushDirection.normalized * force);
+        }       
     }
 }

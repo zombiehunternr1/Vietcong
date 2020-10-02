@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
         //This prevents going faster when running diagonically
         if (direction.sqrMagnitude > 1f)
         {
-            direction = direction.normalized; 
+            direction = direction.normalized;
         }
 
         //Multiplies the movement speed and adds the speed to the charactercontroller with the new directions
@@ -37,6 +37,6 @@ public class Movement : MonoBehaviour
         if (facingrotation != Vector3.zero)
         {
             transform.forward = facingrotation;
-        }   
+        }
     }
 }
