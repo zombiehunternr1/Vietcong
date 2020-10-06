@@ -5,17 +5,36 @@ using UnityEngine;
 public class Projectileshooter : MonoBehaviour
 {
     public GameObject Projectile;
+    public Transform ProjectileShooterPosition;
+    private float NextFire;
+    private float FirstShoot = 4;
+    private float SecondShoot = 8;
 
     // Start is called before the first frame update
     void Start()
     {
-        var newProjectile = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        newProjectile.transform.parent = gameObject.transform;
+        //Start coroutine to create a projectile and fire it.
+       StartCoroutine(CreateProjectile());
     }
 
-    // Update is called once per frame
-    void Update()
+    //Coroutine that creates the new projectile.
+    IEnumerator CreateProjectile()
     {
-        
+        //Keeps looping infinitely
+        while(true)
+        {
+            //Sets the nextfire float based on a random number it generates from the floats FirstShoot and SecondShoot.
+            NextFire = Random.Range(FirstShoot, SecondShoot);
+            //Delay before firing projectile
+            Debug.Log(NextFire);
+            yield return new WaitForSeconds(NextFire);    
+            //runs the funtion that creates the projectile
+            ShootProjectile();
+        }
+    }
+
+    void ShootProjectile()
+    {
+        Instantiate(Projectile, ProjectileShooterPosition.position, ProjectileShooterPosition.rotation);
     }
 }

@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float MovementSpeed = 20;
+    public float m_Speed = 20f;   // this is the projectile's speed
+    public float m_Lifespan = 60f; // this is the projectile's lifespan (in seconds)
+    private Rigidbody m_Rigidbody;
+    void Awake()
+    {
+        m_Rigidbody = GetComponent<Rigidbody>();
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position += transform.right * Time.deltaTime * MovementSpeed;
+        m_Rigidbody.AddForce(m_Rigidbody.transform.forward * m_Speed);
+        Destroy(gameObject, m_Lifespan);
     }
 }
+
+ 
