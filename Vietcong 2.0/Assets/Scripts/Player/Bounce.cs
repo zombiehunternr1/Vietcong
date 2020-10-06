@@ -17,7 +17,8 @@ public class Bounce : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "bounce")
+        //Checks if the players collide with eachother
+        if (PlayerTotal.PlayerList.Contains(other.gameObject))
         {
             handler.SetCanAct(DEFAULTSTUN);
             Vector3 direction = (transform.position - other.transform.position).normalized;
