@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        //Add force to the rigidbody to move the projectile forward with the speed variable.
+        //Add force to the rigidbody to move the projectile forward with the PSpeed variable.
         Rigid.AddForce(Rigid.transform.forward * PSpeed);
         //Destroys the bullet after the life span of the projectile has been reached.
         Destroy(gameObject, PLifespan);
