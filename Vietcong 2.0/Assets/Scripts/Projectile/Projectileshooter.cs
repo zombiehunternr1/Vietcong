@@ -70,7 +70,6 @@ public class Projectileshooter : MonoBehaviour
                 }
             }               
             //Delay before firing projectile
-            Debug.Log(NextFire);
             yield return new WaitForSeconds(NextFire);          
         }
     }

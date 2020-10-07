@@ -18,8 +18,9 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        //Add force to the rigidbody to move the projectile forward with the PSpeed variable.
-        Rigid.AddForce(Rigid.transform.forward * PSpeed);
+        /*Add force to the rigidbody to move the projectile forward with the PSpeed variable. 
+        Because it needs to shoot out of the cilider I need to use the transform.up position because of the cilider is positioned */
+        Rigid.AddForce(Rigid.transform.up * PSpeed);
         //Destroys the bullet after the life span of the projectile has been reached.
         Destroy(gameObject, PLifespan);
     }
