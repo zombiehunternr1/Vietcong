@@ -10,10 +10,4 @@ public class PlayerFinder : MonoBehaviour
         //Adds player to the totalplayer list if this script is attached to a player.
         PlayerTotal.AddPlayer(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

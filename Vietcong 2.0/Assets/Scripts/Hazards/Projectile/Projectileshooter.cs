@@ -6,6 +6,7 @@ public class Projectileshooter : MonoBehaviour
 {
     public GameObject Projectile;
     public Transform ProjectileShooterPosition;
+    private Color COrange = new Color32(254, 161, 0, 1);
     private float NextFire;
     private float FirstShoot = 4;
     private float SecondShoot = 8;
@@ -54,9 +55,20 @@ public class Projectileshooter : MonoBehaviour
             {
                 //Keeps adding up in real time
                 StartPrep += Time.deltaTime;
-                //Changes the color from white to red depending on the difference of the variables StartPrep and NextFire.
-                PrepToFireColor.color = Color.Lerp(Color.white, Color.red, (StartPrep / NextFire));
-                //Returns null so the lerp isn't depended on second or frame refresh rate.
+
+                //Checks if the variable StartPrep time is greater or equal to the variable NextFire minus 2 seconds.
+                if (StartPrep >= NextFire - 2)
+                {
+                    //Change the projectile shooter to the color orange.
+                    PrepToFireColor.color = COrange;
+                }
+                //Checks if the variable StartPrep time is greater or equal to the variable NextFire minus 1 seconds.
+                if (StartPrep >= NextFire - 1)
+                {
+                    //Change the projectile shooter to the color red.
+                    PrepToFireColor.color = Color.red;
+                } 
+                //Returns a null variable so it doesn't effect the framerate and fills up the memory.
                 yield return null;
                 //Checks if the variable StartPrep is bigger then the NextFire variable.
                 if(StartPrep > NextFire)
