@@ -5,20 +5,56 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     private Color COrange = new Color32(254, 161, 0, 1);
+    public bool IsHit = true;
 
     public IEnumerator DroppingThisTile()
     {
-        //Gets the material from the selected tile that is stored in the variable DTile.
-        var DTileColor = GetComponent<Renderer>().material;
-        //Changes the color to orange.
-        DTileColor.color = COrange;
-        //Waits 1 seconds before executing the rest of the code.
-        yield return new WaitForSeconds(1);
-        //Changes the color to red.
-        DTileColor.color = Color.red;
-        //Waits 1 seconds before executing the rest of the code.
-        yield return new WaitForSeconds(1);
-        //Destroys the tile that is stored in the variable DTile.
-        Destroy(this.gameObject);
+        if (IsHit == false)
+        {
+            //Gets the material from the selected tile that is stored in the variable DTile.
+            var DTileColor = GetComponent<Renderer>().material;
+            //Changes the color to orange.
+            DTileColor.color = COrange;
+            //Waits 1 seconds before executing the rest of the code.
+            yield return new WaitForSeconds(1);
+            //Changes the color to red.
+            DTileColor.color = Color.red;
+            //Waits 1 seconds before executing the rest of the code.
+            yield return new WaitForSeconds(1);
+            //Destroys the tile that is stored in the variable DTile.
+            Destroy(this.gameObject);
+        }
+        if(IsHit == true)
+        {
+            //Gets the material from the selected tile that is stored in the variable DTile.
+            var DTileColor = GetComponent<Renderer>().material;
+            //Changes the color to orange.
+            DTileColor.color = COrange;
+            //Waits 1 seconds before executing the rest of the code.
+            yield return new WaitForSeconds(1);
+            //Changes the color to red.
+            DTileColor.color = Color.red;
+            //Waits 1 seconds before executing the rest of the code.
+            yield return new WaitForSeconds(1);
+            //Changes the color to gray.
+            DTileColor.color = Color.black;
+            //Sets the bool IsHit to false.
+            IsHit = false;
+        }   
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        //Check if the player collides with a tile that has been hit once.
+        //Sets the movementspeed to 1 when walking on the hit tile.
+        //Sets the movementspped to 5 when not walking on the hit tile.
+        if (PlayerTotal.PlayerList.Contains(other.gameObject) && IsHit == false)
+        {
+            other.gameObject.GetComponent<Movement>()._moveSpeed = 1;
+        }
+        else
+        {
+            other.gameObject.GetComponent<Movement>()._moveSpeed = 5;
+        }
     }
 }

@@ -37,8 +37,13 @@ public class TileManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(MinRanVal, MaxRanVal));
             //Starts the coroutine that drops the single selected tile.
             StartCoroutine(DropThisTile.GetComponent<Tile>().DroppingThisTile());
-            //Removes the tile that is stored in the variable DTile from the list TileList.
-            TileList.Remove(DropThisTile);
+            //Checks if the boolean IsHit equal to false.
+            if (DropThisTile.GetComponent<Tile>().IsHit == false)
+            {
+                //Removes the tile that is stored in the variable DTile from the list TileList.
+                TileList.Remove(DropThisTile);
+            }
+            
         }
     }
 }
