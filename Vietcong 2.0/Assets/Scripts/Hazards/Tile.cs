@@ -6,6 +6,8 @@ public class Tile : MonoBehaviour
 {
     private Color COrange = new Color32(254, 161, 0, 1);
     public bool IsHit = true;
+    public GameObject Killzone;
+    public Transform tile;
 
     public IEnumerator DroppingThisTile()
     {
@@ -36,8 +38,15 @@ public class Tile : MonoBehaviour
             DTileColor.color = Color.red;
             //Waits 1 seconds before executing the rest of the code.
             yield return new WaitForSeconds(1);
-            //Changes the color to gray.
+            //Changes the color to black.
             DTileColor.color = Color.black;
+            //Creates the killzone area on the tile and stores it in the variable TempKillZone.
+            var TempKillZone = Instantiate(Killzone, tile.transform.position, tile.rotation);
+            TempKillZone.transform.localScale = tile.transform.localScale;
+            //Waits 1/10 of a second before executing the rest of the code.
+            yield return new WaitForSeconds(0.1f);
+            //Destroys the temporarely killzone.
+            Destroy(TempKillZone);
             //Sets the bool IsHit to false.
             IsHit = false;
         }   

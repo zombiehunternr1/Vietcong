@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8502163719958178694}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 0.5, z: 5}
   m_Children: []
@@ -106,3 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61fabda425a0c7c42bdc467999f291af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsHit: 1
+  Killzone: {fileID: 2659192577466690947, guid: 8bccc61d2a4b6a8439f7a83deb85f0b8,
+    type: 3}
+  tile: {fileID: 8502163719958178695}
