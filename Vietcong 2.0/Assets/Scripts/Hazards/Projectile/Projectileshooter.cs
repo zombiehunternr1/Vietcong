@@ -10,7 +10,6 @@ public class Projectileshooter : MonoBehaviour
     private float NextFire;
     private float FirstShoot = 4;
     private float SecondShoot = 8;
-    private float StartPrep = 0;
     private Material PrepToFireColor;
     private Renderer[] PSchilds; 
 
@@ -50,39 +49,25 @@ public class Projectileshooter : MonoBehaviour
             //Sets the nextfire float based on a random number it generates from the floats FirstShoot and SecondShoot.
             NextFire = Random.Range(FirstShoot, SecondShoot);
 
-            //Keeps looping until the variable StartPrep isn't smaller anymore then the variable NextFire.
-            while (StartPrep < NextFire)
-            {
-                //Keeps adding up in real time
-                StartPrep += Time.deltaTime;
+            //Waits the amount of seconds that variable NextFire holds minus 2 before continuing the code.
+            yield return new WaitForSeconds(NextFire - 2);
+            //Change the projectile shooter to the color orange.
+            PrepToFireColor.color = COrange;
 
-                //Checks if the variable StartPrep time is greater or equal to the variable NextFire minus 2 seconds.
-                if (StartPrep >= NextFire - 2)
-                {
-                    //Change the projectile shooter to the color orange.
-                    PrepToFireColor.color = COrange;
-                }
-                //Checks if the variable StartPrep time is greater or equal to the variable NextFire minus 1 seconds.
-                if (StartPrep >= NextFire - 1)
-                {
-                    //Change the projectile shooter to the color red.
-                    PrepToFireColor.color = Color.red;
-                } 
-                //Returns a null variable so it doesn't effect the framerate and fills up the memory.
-                yield return null;
-                //Checks if the variable StartPrep is bigger then the NextFire variable.
-                if(StartPrep > NextFire)
-                {
-                    //runs the funtion that creates the projectile
-                    ShootProjectile();
-                    //Changes the color back to white to visually reset the projectileshooter.
-                    PrepToFireColor.color = Color.white;
-                    //Reset the variable StartPrep.
-                    StartPrep = 0;
-                }
-            }               
-            //Delay before firing projectile
-            yield return new WaitForSeconds(NextFire);          
+            //Waits 1 second before continuing with the code.
+            yield return new WaitForSeconds(1);
+            //Change the projectile shooter to the color red.
+            PrepToFireColor.color = Color.red;
+
+            //Waits 1 second before firing the projectile.
+            yield return new WaitForSeconds(1);
+            //runs the funtion that creates the projectile.
+            ShootProjectile();
+            //Changes the color back to white to visually reset the projectileshooter.
+            PrepToFireColor.color = Color.white;
+
+            //Returns a null variable so it doesn't effect the framerate and fills up the memory.
+            yield return null;         
         }
     }
 
