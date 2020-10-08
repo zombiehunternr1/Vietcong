@@ -5,6 +5,8 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     private List<Transform> TileList = new List<Transform>();
+    public float MinRanVal;
+    public float MaxRanVal;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,8 @@ public class TileManager : MonoBehaviour
         {
             //Gets a random tile from the TileList and puts it in the variable DTile.
             var DropThisTile = TileList[Random.Range(0, TileList.Count)];
-            yield return new WaitForSeconds(1);
+            //Waits with executing the rest of the function until the random range time has passed.
+            yield return new WaitForSeconds(Random.Range(MinRanVal, MaxRanVal));
             //Starts the coroutine that drops the single selected tile.
             StartCoroutine(DropThisTile.GetComponent<Tile>().DroppingThisTile());
             //Removes the tile that is stored in the variable DTile from the list TileList.
