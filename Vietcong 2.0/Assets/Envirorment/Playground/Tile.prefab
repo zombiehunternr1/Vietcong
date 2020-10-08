@@ -107,6 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsHit: 1
-  Killzone: {fileID: 2659192577466690947, guid: 8bccc61d2a4b6a8439f7a83deb85f0b8,
-    type: 3}
+  Killzone: {fileID: 222755874947519468, guid: a314427504e5192419e95d94eceb88eb, type: 3}
   tile: {fileID: 8502163719958178695}
