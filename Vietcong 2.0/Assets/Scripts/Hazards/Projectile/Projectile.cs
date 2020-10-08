@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // this is the projectile's speed
-    public float PSpeed = 20f;
+    public float PSpeed;
     // this is the projectile's lifespan (in seconds)
     public float PLifespan = 60f; 
     private Rigidbody Rigid;
