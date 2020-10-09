@@ -23,6 +23,13 @@ public class Tile : MonoBehaviour
             DTileColor.color = Color.red;
             //Waits 1 seconds before executing the rest of the code.
             yield return new WaitForSeconds(1);
+            //Creates the killzone area on the tile and stores it in the variable TempKillZone.
+            var TempKillZone = Instantiate(Killzone, tile.transform.position, tile.rotation);
+            TempKillZone.transform.localScale = tile.transform.localScale;
+            //Waits 1/10 of a second before executing the rest of the code.
+            yield return new WaitForSeconds(0.1f);
+            //Destroys the temporarely killzone.
+            Destroy(TempKillZone);
             //Destroys the tile that is stored in the variable DTile.
             Destroy(this.gameObject);
         }
