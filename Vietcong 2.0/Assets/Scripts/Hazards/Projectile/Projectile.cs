@@ -9,12 +9,11 @@ public class Projectile : MonoBehaviour
     // this is the projectile's lifespan (in seconds)
     public float PLifespan = 60f; 
     private Rigidbody Rigid;
-    //Gets the game controller component that keeps track when the game needs to be reset.
-    public GameObject Controller;
+    public GameEvent ProjectileHit;
 
     void Awake()
     {
-        //Gets  the rigidbody of the projectile.
+        //Gets the rigidbody of the projectile.
         Rigid = GetComponent<Rigidbody>();
     }
 
@@ -31,11 +30,12 @@ public class Projectile : MonoBehaviour
     {
         //Checks if the projectile hits a player.
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
-        {
-            //Destroys the projectile apon impact and the player and calls the function ResetGame.            
+        {           
+            //Destroys the projectile apon impact and the player, removes the player from the playerlist and calls the game event listener.         
             Destroy(other.gameObject);
-            PlayerTotal.PlayerList.Remove(other.gameObject);
-            Controller.GetComponent<GameController>().ResetGame();
+            PlayerTotal.RemovePlayer(other.gameObject);
+            //Sends an alert to all listening game event listeners.
+            ProjectileHit.Raise();                
             Destroy(gameObject);
         }
     }

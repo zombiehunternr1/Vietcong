@@ -52,7 +52,7 @@ public class Tile : MonoBehaviour
         }   
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
         //Check if the player collides with a tile that has been hit once.
         //Sets the movementspeed to 1 when walking on the hit tile.

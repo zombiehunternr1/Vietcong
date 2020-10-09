@@ -90,13 +90,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3996661382690665079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9cf346c01083954b949cb5fe4b5a6af, type: 3}
+  m_Script: {fileID: 11500000, guid: 46e0ee68f7ecb144e9c61a6e9311c5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 2919021859379393113, guid: e3f9e29162be7ae4986c9c16d869133e,
-    type: 3}
+  Projectile: {fileID: 0}
   ProjectileShooterPosition: {fileID: 4011702788345927605}
-  Cooldown: 1
 --- !u!1 &6007034563606455355
 GameObject:
   m_ObjectHideFlags: 0

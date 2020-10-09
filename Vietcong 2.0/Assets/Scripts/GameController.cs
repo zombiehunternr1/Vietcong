@@ -9,13 +9,24 @@ public class GameController : MonoBehaviour
     //This function gets called everytime a player gets hit.
     public void ResetGame()
     {
-        //Checks if the playerlist is equal to or less then 1.
-        if (PlayerTotal.PlayerList.Count <= 1)
+        //Checks if the playerlist is equal to 1.
+        if (PlayerTotal.PlayerList.Count == 1)
         {
-            //Clears the list before reloading the scene.
-            PlayerTotal.PlayerList.Clear();
-            //Reloads the scene.
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Starts the coroutine DelayReset and freezes the time.
+            StartCoroutine(DelayReset());
+            Time.timeScale = 0;
         }
+    }
+
+    //Before restarting the scene the code waits 2 seconds before executing ferther.
+    IEnumerator DelayReset()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        //Unfreezes the time.
+        Time.timeScale = 1;
+        //Clears the list before reloading the scene.
+        PlayerTotal.ResetList();
+        //Reloads the scene.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

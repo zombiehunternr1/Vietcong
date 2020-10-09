@@ -104,13 +104,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2919021859379393113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0751cef96ad78204f8c05b760d74429c, type: 3}
+  m_Script: {fileID: 11500000, guid: 28de3f86b76a9684cb0b2811b252b563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PSpeed: 1500
-  PLifespan: 10
-  Controller: {fileID: 8026113445321071171, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
-    type: 3}
+  PSpeed: 1400
+  PLifespan: 60
+  ProjectileHit: {fileID: 11400000, guid: 6dd0f4e862ddf64429caa505b813b397, type: 2}
 --- !u!54 &-2196560925154308986
 Rigidbody:
   m_ObjectHideFlags: 0

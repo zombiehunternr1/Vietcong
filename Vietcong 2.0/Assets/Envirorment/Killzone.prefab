@@ -63,8 +63,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 222755874947519468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071e11954e80fb54dbf14274bc436aa8, type: 3}
+  m_Script: {fileID: 11500000, guid: fc37155df8f7cef439fbe4cccf0eedcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 8026113445321071171, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
-    type: 3}
+  KillzoneHit: {fileID: 11400000, guid: 6dd0f4e862ddf64429caa505b813b397, type: 2}

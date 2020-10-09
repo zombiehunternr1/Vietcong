@@ -37,6 +37,11 @@ public class Movement : MonoBehaviour
             {
                 transform.forward = facingrotation;
             }
+            //To prevent players from climbing up.
+            if(direction.y > 0)
+            {
+                direction.y = 0;
+            }
         }
     }
 

@@ -8,8 +8,8 @@ public class Projectileshooter : MonoBehaviour
     public Transform ProjectileShooterPosition;
     private Color COrange = new Color32(254, 161, 0, 1);
     private float NextFire;
-    private float FirstShoot = 4;
-    private float SecondShoot = 8;
+    private float FirstShoot = 5;
+    private float SecondShoot = 16;
     private Material PrepToFireColor;
     private Renderer[] PSchilds; 
 
