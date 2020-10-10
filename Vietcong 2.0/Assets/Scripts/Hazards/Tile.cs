@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public bool IsHit = true;
     public GameObject Killzone;
     public Transform tile;
+    public GameObject AirProjectile;
 
     public IEnumerator DroppingThisTile()
     {
@@ -21,10 +22,13 @@ public class Tile : MonoBehaviour
             yield return new WaitForSeconds(1);
             //Changes the color to red.
             DTileColor.color = Color.red;
+            //Creates the air projectile on the tile and stores it in the variable TempAirProjectile.
+            var TempAirProjectile = Instantiate(AirProjectile, tile.position + (Vector3.up * 20f), tile.rotation);
             //Waits 1 seconds before executing the rest of the code.
             yield return new WaitForSeconds(1);
             //Creates the killzone area on the tile and stores it in the variable TempKillZone.
             var TempKillZone = Instantiate(Killzone, tile.transform.position, tile.rotation);
+            //Resizes the killzone area to the same size as the tile itself.
             TempKillZone.transform.localScale = tile.transform.localScale;
             //Waits 1/10 of a second before executing the rest of the code.
             yield return new WaitForSeconds(0.1f);
@@ -44,11 +48,14 @@ public class Tile : MonoBehaviour
             //Changes the color to red.
             DTileColor.color = Color.red;
             //Waits 1 seconds before executing the rest of the code.
-            yield return new WaitForSeconds(1);
+            //Creates the air projectile on the tile and stores it in the variable TempAirProjectile.
+            var TempAirProjectile = Instantiate(AirProjectile, tile.position + (Vector3.up * 20f), tile.rotation);
+            yield return new WaitForSeconds(1);           
             //Changes the color to black.
             DTileColor.color = Color.black;
             //Creates the killzone area on the tile and stores it in the variable TempKillZone.
             var TempKillZone = Instantiate(Killzone, tile.transform.position, tile.rotation);
+            //Resizes the killzone area to the same size as the tile itself.
             TempKillZone.transform.localScale = tile.transform.localScale;
             //Waits 1/10 of a second before executing the rest of the code.
             yield return new WaitForSeconds(0.1f);

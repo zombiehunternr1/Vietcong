@@ -874,6 +874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectileshooter (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3996661382690665079, guid: 377a0d2740aae7545b8a215932a9de69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011702788345927605, guid: 377a0d2740aae7545b8a215932a9de69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2684,6 +2689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectileshooter (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3996661382690665079, guid: 377a0d2740aae7545b8a215932a9de69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011702788345927605, guid: 377a0d2740aae7545b8a215932a9de69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2964,6 +2974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectileshooter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3996661382690665079, guid: 377a0d2740aae7545b8a215932a9de69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011702788345927605, guid: 377a0d2740aae7545b8a215932a9de69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3167,6 +3182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectileshooter (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996661382690665079, guid: 377a0d2740aae7545b8a215932a9de69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4011702788345927605, guid: 377a0d2740aae7545b8a215932a9de69,
         type: 3}
@@ -3698,6 +3718,11 @@ PrefabInstance:
     - target: {fileID: 2510145710650367907, guid: 2cc8ec3edf2c3c74e817b41ec991253e,
         type: 3}
       propertyPath: IsHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510145710650367908, guid: 2cc8ec3edf2c3c74e817b41ec991253e,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2510145710650367911, guid: 2cc8ec3edf2c3c74e817b41ec991253e,
