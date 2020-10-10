@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
         //Checks if the playerlist is equal to 1.
         if (PlayerTotal.PlayerList.Count == 1)
         {
+            //Adds the last standing player to the ranklist.
+            RankPosition.AddPlayer(gameObject);
             //Starts the coroutine DelayReset and freezes the time.
             StartCoroutine(DelayReset());
             Time.timeScale = 0;
@@ -24,8 +26,10 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
         //Unfreezes the time.
         Time.timeScale = 1;
-        //Clears the list before reloading the scene.
+        //Clears the playerlist before reloading the scene.
         PlayerTotal.ResetList();
+        //Clears the ranklist before reloading the scene.
+        RankPosition.ResetList();
         //Reloads the scene.
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

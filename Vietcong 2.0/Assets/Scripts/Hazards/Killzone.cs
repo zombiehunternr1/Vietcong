@@ -11,8 +11,9 @@ public class Killzone : MonoBehaviour
         //Checks if its a player that hits the killzone area
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
         {
-            //Destroys the killzone and the player. Removes the player from the playerlist and calls the game event listener.
+            //Destroys the killzone and the player. Removes the player from the playerlist and adds player to the ranklist then calls the game event listener.
             PlayerTotal.RemovePlayer(other.gameObject);
+            RankPosition.AddPlayer(other.gameObject);
             //Sends an alert to all listening game event listeners.
             KillzoneHit.Raise();
             Destroy(other.gameObject);

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Vietgong mini game.unity
+    guid: a080d9014f1d2c24184aa48c631cfbcb
   m_configObjects: {}
