@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
-
     //This function gets called everytime a player gets hit.
     public void ResetGame()
     {
@@ -15,6 +14,10 @@ public class GameController : MonoBehaviour
         {
             //Adds the last standing player to the ranklist.
             RankPosition.AddPlayer(gameObject);
+            //Gets the script DisplayRank and stores it in the variable ShowResult.
+            var ShowResult = GetComponent<DisplayRank>();
+            //Displays the result of the players who came on top.
+            ShowResult.RankDisplay();
             //Starts the coroutine DelayReset and freezes the time.
             StartCoroutine(DelayReset());
             Time.timeScale = 0;

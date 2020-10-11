@@ -13,7 +13,7 @@ public class DisplayRank : MonoBehaviour
         string PlayerRank = "";
 
         //Goes over each player in the ranklist and displays them in the DisplayRankText.
-        for (Count = 1; Count < RankPosition.RankList.Count; Count++)
+        for (Count = 1; Count <= RankPosition.RankList.Count; Count++)
         {
             PlayerRank += Count + "." + "Player " + RankPosition.RankList.Count + "\n";
         }
