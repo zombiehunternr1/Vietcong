@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
-{
-    public float _moveSpeed = 15f;
+{ 
+    public float _normalSpeed;
+    private float _moveSpeed;
     private Rigidbody rb;
     private Vector2 inputValue;
     private StateHandler handler;
 
     void Awake()
     {
+        _moveSpeed = _normalSpeed;
         rb = GetComponent<Rigidbody>();
         handler = GetComponent<StateHandler>();
     }
@@ -19,6 +21,18 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         Direction();
+    }
+
+    //Sets the _movespeed variable equal to the paramater NewMoveSpeed.
+    public void ChangeMovementSpeed(float NewMoveSpeed)
+    {
+        _moveSpeed = NewMoveSpeed;
+    }
+
+    //This function can be called to reset the movement speed to it's default value.
+    public void ChangeMovementSpeed()
+    {
+        ChangeMovementSpeed(_normalSpeed);
     }
 
     private void Direction()

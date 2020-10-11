@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     public GameObject Killzone;
     public Transform tile;
     public GameObject AirProjectile;
+    public float SlowSpeed;
 
     public IEnumerator DroppingThisTile()
     {
@@ -67,17 +68,17 @@ public class Tile : MonoBehaviour
     }
 
     private void OnCollisionStay(Collision other)
-    {
+    { 
         //Check if the player collides with a tile that has been hit once.
         //Sets the movementspeed to 1 when walking on the hit tile.
         //Sets the movementspped to 5 when not walking on the hit tile.
         if (PlayerTotal.PlayerList.Contains(other.gameObject) && IsHit == false)
         {
-            other.gameObject.GetComponent<Movement>()._moveSpeed = 1;
+            other.gameObject.GetComponent<Movement>().ChangeMovementSpeed(SlowSpeed);         
         }
         else
         {
-            other.gameObject.GetComponent<Movement>()._moveSpeed = 5;
+            other.gameObject.GetComponent<Movement>().ChangeMovementSpeed();
         }
     }
 }

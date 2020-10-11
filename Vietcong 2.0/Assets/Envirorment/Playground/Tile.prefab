@@ -111,3 +111,4 @@ MonoBehaviour:
   tile: {fileID: 8502163719958178695}
   AirProjectile: {fileID: 6759799368607407726, guid: 64ba03cd391b2a846979aacff8c1f260,
     type: 3}
+  SlowSpeed: 1

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
+
     //This function gets called everytime a player gets hit.
     public void ResetGame()
     {
