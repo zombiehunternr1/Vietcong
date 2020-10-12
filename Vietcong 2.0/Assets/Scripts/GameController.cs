@@ -6,14 +6,16 @@ using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
+    public float DelayResetCount;
+
     //This function gets called everytime a player gets hit.
-    public void ResetGame()
+    public void EndGame()
     {
         //Checks if the playerlist is equal to 1.
         if (PlayerTotal.PlayerList.Count == 1)
         {
             //Adds the last standing player to the ranklist.
-            RankPosition.AddPlayer(gameObject);
+            RankPosition.AddPlayer(PlayerTotal.PlayerList[0]);
             //Gets the script DisplayRank and stores it in the variable ShowResult.
             var ShowResult = GetComponent<DisplayRank>();
             //Displays the result of the players who came on top.
@@ -24,10 +26,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //Before restarting the scene the code waits 2 seconds before executing ferther.
+    //Before restarting the scene the code waits the amount of seconds before executing ferther that is stored in the float variable DelayResetCount.
     IEnumerator DelayReset()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(DelayResetCount);
         //Unfreezes the time.
         Time.timeScale = 1;
         //Clears the playerlist before reloading the scene.

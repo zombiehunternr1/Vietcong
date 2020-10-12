@@ -288,6 +288,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777917319}
     m_Modifications:
+    - target: {fileID: 2094191153, guid: c049720bff821634c8c573ff74267d46, type: 3}
+      propertyPath: PlayerID
+      value: 
+      objectReference: {fileID: 11400000, guid: 0028fa2a3a340474cb607f9764edcd12,
+        type: 2}
     - target: {fileID: 4506111116707770158, guid: c049720bff821634c8c573ff74267d46,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1004,6 +1009,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777917319}
     m_Modifications:
+    - target: {fileID: 2094191153, guid: c049720bff821634c8c573ff74267d46, type: 3}
+      propertyPath: PlayerID
+      value: 
+      objectReference: {fileID: 11400000, guid: 64a78a79b1670ab4fafd9f930c0702b7,
+        type: 2}
     - target: {fileID: 4506111116707770158, guid: c049720bff821634c8c573ff74267d46,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1730,8 +1740,8 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
+    m_BestFit: 1
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1992,7 +2002,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 77572016}
-        m_MethodName: ResetGame
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2009,6 +2019,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777917319}
     m_Modifications:
+    - target: {fileID: 2094191153, guid: c049720bff821634c8c573ff74267d46, type: 3}
+      propertyPath: PlayerID
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d877cafebb68034b80ea5038d6590e8,
+        type: 2}
     - target: {fileID: 4506111116707770158, guid: c049720bff821634c8c573ff74267d46,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4093,6 +4108,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777917319}
     m_Modifications:
+    - target: {fileID: 2094191153, guid: c049720bff821634c8c573ff74267d46, type: 3}
+      propertyPath: PlayerID
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d60c67df9aa2494a8fa63b6471ea450,
+        type: 2}
     - target: {fileID: 4506111117590408006, guid: c049720bff821634c8c573ff74267d46,
         type: 3}
       propertyPath: m_Name

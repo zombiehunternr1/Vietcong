@@ -30,14 +30,14 @@ public class Projectile : MonoBehaviour
     {
         //Checks if the projectile hits a player.
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
-        {           
-            //Destroys the projectile apon impact and the player, removes the player from the playerlist and adds player to the ranklist then calls the game event listener.         
-            Destroy(other.gameObject);
-            RankPosition.AddPlayer(other.gameObject);
-            PlayerTotal.RemovePlayer(other.gameObject);
+        {
+            //Destroys the projectile apon impact and the player gets disabled, removes the player from the playerlist and adds player to the ranklist then calls the game event listener.         
+            RankPosition.RankList.Insert(0, other.gameObject);
+            PlayerTotal.RemovePlayer(other.gameObject);          
             //Sends an alert to all listening game event listeners.
             ProjectileHit.Raise();                
             Destroy(gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

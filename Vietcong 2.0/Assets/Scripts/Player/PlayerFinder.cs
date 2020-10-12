@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFinder : MonoBehaviour
 {
+    public PlayerID PlayerID;
     // Start is called before the first frame update
     void Start()
     {
