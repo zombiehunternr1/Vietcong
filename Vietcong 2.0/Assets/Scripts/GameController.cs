@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
     public float DelayResetCount;
-
+    
     //This function gets called everytime a player gets hit.
     public void EndGame()
     {
