@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DisplayName : MonoBehaviour
 {
-    public float WaitBeforeHiding;
     public Text PlayerNameText;
     public PlayerID Player;
     public Canvas CanvasDisplay;
@@ -14,7 +13,6 @@ public class DisplayName : MonoBehaviour
     void Start()
     {
         PlayerNameText.text = "Player " + Player.ID;
-        StartCoroutine(DisplayNameTemp());
     }
 
     // Update is called once per frame
@@ -22,12 +20,5 @@ public class DisplayName : MonoBehaviour
     {
         Vector3 NamePos = Camera.main.WorldToScreenPoint(this.transform.position);
         PlayerNameText.transform.position = NamePos;
-    }
-
-    IEnumerator DisplayNameTemp()
-    {
-        yield return new WaitForSeconds(WaitBeforeHiding);
-        CanvasDisplay.gameObject.SetActive(false);
-        gameObject.SetActive(false);
     }
 }
