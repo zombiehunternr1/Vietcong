@@ -12,8 +12,7 @@ public class DisplayRank : MonoBehaviour
         int i = 0;
         int Count;
         string PlayerRank = "";
-
-        //Reverses the rank list so I have the players in the order in which they died.
+        //Reverses the list so the correct win order will be displayed.
         RankPosition.RankList.Reverse();
 
         //Goes over each player in the ranklist and displays them in the DisplayRankText.

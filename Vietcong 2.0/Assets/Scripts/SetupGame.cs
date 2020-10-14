@@ -65,7 +65,7 @@ public class SetupGame : MonoBehaviour
             {
                 ProjectileShooterScript = hazard.GetComponent<Projectileshooter>();
                 ProjectileShooterScript.enabled = false;
-            }          
+            }
         }
     }
     //This function gets called to disable all the players.
@@ -116,11 +116,18 @@ public class SetupGame : MonoBehaviour
             }
         }
     }
+
+    //This function gets called when the game is going to start.
+    public void StartGame()
+    {
+        EnableHazards();
+        EnablePlayers();
+    }
     //Disables all the hazards and players. Starts counting down before starting, once it hits "GO!" the function StartGame will be called.
     IEnumerator PrepareGame()
     {
+        DisablePlayers();
         DisableHazards();
-        DisablePlayers();      
         CountdownText.text = "3";
         yield return new WaitForSeconds(1);
         CountdownText.text = "2";
@@ -128,9 +135,8 @@ public class SetupGame : MonoBehaviour
         CountdownText.text = "1";
         yield return new WaitForSeconds(1);
         CountdownText.text = "Go!";
-        EnablePlayers();
+        StartGame();
         yield return new WaitForSeconds(1);
-        EnableHazards();
         CountdownText.text = "";      
     }
 }

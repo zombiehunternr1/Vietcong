@@ -14,10 +14,8 @@ public class GameController : MonoBehaviour
         //Checks if the playerlist is equal to 1.
         if (PlayerTotal.PlayerList.Count == 1)
         {
-            //Gets the last player in the list PlayerList and at it in the gameobject variable LastPlayer.
-            GameObject LastPlayer = PlayerTotal.PlayerList[0];
             //Adds the last standing player to the ranklist.
-            RankPosition.RankList.Add(LastPlayer);
+            RankPosition.AddPlayer(PlayerTotal.PlayerList[0]);
             //Gets the script DisplayRank and stores it in the variable ShowResult.
             var ShowResult = GetComponent<DisplayRank>();
             //Displays the result of the players who came on top.
