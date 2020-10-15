@@ -19,7 +19,7 @@ public class DisplayRank : MonoBehaviour
         //Goes over each player in the ranklist and displays them in the DisplayRankText.
         for (Count = 1; Count <= RankPosition.RankList.Count; Count++)
         {
-            PlayerRank += Count + "." + "Player " + RankPosition.RankList[i].GetComponent<PlayerFinder>().PlayerID.ID + "\n";
+            PlayerRank += Count + "." + " Player " + RankPosition.RankList[i].GetComponent<PlayerFinder>().PlayerInfo.ID + "\n";
             i++;
         }
         DisplayRankText.text = PlayerRank;

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class DisplayName : MonoBehaviour
 {
     public Text PlayerNameText;
-    public PlayerID Player;
+    public PlayerInfo Player;
     public Canvas CanvasDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerNameText.text = "Player " + Player.ID;
+        PlayerNameText.text = "P" + Player.ID;
     }
 
     // Update is called once per frame

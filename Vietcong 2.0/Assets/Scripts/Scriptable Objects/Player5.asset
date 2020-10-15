@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Player5
   m_EditorClassIdentifier: 
   ID: 5
+  PlayerColor: {fileID: 2100000, guid: 32900531a31208347ae52354a4a9ba87, type: 2}
