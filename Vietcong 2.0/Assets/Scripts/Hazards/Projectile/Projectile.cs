@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     // this is the projectile's lifespan (in seconds)
     public float PLifespan = 60f; 
     private Rigidbody Rigid;
-    public GameEvent ProjectileHit;
 
     void Awake()
     {
@@ -28,17 +27,10 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Checks if the projectile hits a player.
+        //Checks if the projectile hits a player. If so it destorys the object.
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
-        {
-            //Destroys the projectile apon impact and the player gets disabled, removes the player from the playerlist and adds player to the ranklist then calls the game event listener.         
-            RankPosition.RankList.Add(other.gameObject);
-            PlayerTotal.RemovePlayer(other.gameObject);
-
-            //Sends an alert to all listening game event listeners.
-            ProjectileHit.Raise();                
+        {                
             Destroy(gameObject);
-            other.gameObject.SetActive(false);
         }
     }
 }

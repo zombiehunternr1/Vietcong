@@ -21,4 +21,9 @@ public class DisplayName : MonoBehaviour
         Vector3 NamePos = Camera.main.WorldToScreenPoint(this.transform.position);
         PlayerNameText.transform.position = NamePos;
     }
+
+    public void DisableNameDisplay()
+    {
+        PlayerNameText.enabled = false;
+    }
 }
