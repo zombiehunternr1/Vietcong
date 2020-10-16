@@ -9,7 +9,8 @@ public class SetupGame : MonoBehaviour
     private List<Transform> PlayerList = new List<Transform>();
 
     public Text CountdownText;
-    public RectTransform Panel;
+    public RectTransform DescriptionPanel;
+    public RectTransform PlayerNames;
 
     TileManager TileManagerScript;
     Projectileshooter ProjectileShooterScript;
@@ -18,6 +19,9 @@ public class SetupGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Disables the playernames panel so the playernames won't be displayed while the description panel is still active.
+        PlayerNames.gameObject.SetActive(false);
+
         //Adds all the children components from the parent to the array.
         Transform[] TempHazard = GetComponentsInChildren<Transform>();
         Transform[] TempPlayer = GetComponentsInChildren<Transform>();
@@ -129,7 +133,9 @@ public class SetupGame : MonoBehaviour
     //This function gets called when a player presses the ready button.
     public void ReadyGame()
     {
-        Panel.gameObject.SetActive(false);
+        //Disables the description panel, enables the playernames display and starts the coroutine.
+        DescriptionPanel.gameObject.SetActive(false);
+        PlayerNames.gameObject.SetActive(true);
         StartCoroutine(PrepareGame());
     }
 

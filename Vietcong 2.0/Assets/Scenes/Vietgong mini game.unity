@@ -1084,7 +1084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountdownText: {fileID: 1655924035}
-  Panel: {fileID: 390848935}
+  DescriptionPanel: {fileID: 390848935}
+  PlayerNames: {fileID: 2069013650}
 --- !u!1001 &279391500
 PrefabInstance:
   m_ObjectHideFlags: 0
