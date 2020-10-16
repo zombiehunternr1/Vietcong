@@ -9,6 +9,7 @@ public class SetupGame : MonoBehaviour
     private List<Transform> PlayerList = new List<Transform>();
 
     public Text CountdownText;
+    public RectTransform Panel;
 
     TileManager TileManagerScript;
     Projectileshooter ProjectileShooterScript;
@@ -36,17 +37,24 @@ public class SetupGame : MonoBehaviour
             }
         }
         //Goes over each item in the variable TempPlayer and adds it to the list PlayerList.
-        foreach(Transform player in TempPlayer)
+        foreach (Transform player in TempPlayer)
         {
             //Checks if any of the items in the array TempPlayer has the script Movement attached to itself, if so add the item to the PlayerList.
             if (player.GetComponent<Movement>())
             {
                 PlayerList.Add(player);
-            }            
+            }
+            //Checks if any of the items in the array TempPlayer has the script Display name attached to itself, if so add the item to the PlayerList.
+            if (player.GetComponent<DisplayName>())
+            {
+                PlayerList.Add(player);
+            }
         }
-        //Starts the coroutine to setup the game.
-        StartCoroutine(PrepareGame());
+        //Disables all the hazards and player.
+        DisableHazards();
+        DisablePlayers();
     }
+
 
     //This function gets called to disable all the hazards.
     void DisableHazards()
@@ -82,6 +90,7 @@ public class SetupGame : MonoBehaviour
             }
         }
     }
+
     //This function gets called to enable all the hazards.
     void EnableHazards()
     {
@@ -116,11 +125,17 @@ public class SetupGame : MonoBehaviour
             }
         }
     }
-    //Disables all the hazards and players. Starts counting down before starting, once it hits "GO!" the function StartGame will be called.
-    IEnumerator PrepareGame()
+
+    //This function gets called when a player presses the ready button.
+    public void ReadyGame()
     {
-        DisableHazards();
-        DisablePlayers();      
+        Panel.gameObject.SetActive(false);
+        StartCoroutine(PrepareGame());
+    }
+
+    //Starts counting down before starting, once it hits "GO!" the function StartGame will be called.
+    IEnumerator PrepareGame()
+    {   
         CountdownText.text = "3";
         yield return new WaitForSeconds(1);
         CountdownText.text = "2";
@@ -132,5 +147,5 @@ public class SetupGame : MonoBehaviour
         yield return new WaitForSeconds(1);
         EnableHazards();
         CountdownText.text = "";      
-    }
+    } 
 }

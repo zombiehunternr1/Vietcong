@@ -20,6 +20,14 @@
                     "expectedControlType": "Key",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ReadyGame",
+                    "type": "Button",
+                    "id": "6775234e-9c01-4296-8d8d-1efcd4268d78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -97,6 +105,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49d047e4-0669-4121-9833-887b31ecda07",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReadyGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

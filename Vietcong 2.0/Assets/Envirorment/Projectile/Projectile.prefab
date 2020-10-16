@@ -109,8 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PSpeed: 1400
-  PLifespan: 60
-  ProjectileHit: {fileID: 11400000, guid: 6dd0f4e862ddf64429caa505b813b397, type: 2}
+  PLifespan: 30
 --- !u!54 &-2196560925154308986
 Rigidbody:
   m_ObjectHideFlags: 0
