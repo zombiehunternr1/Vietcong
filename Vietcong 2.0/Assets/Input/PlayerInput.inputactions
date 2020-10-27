@@ -2,7 +2,7 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Vietcong",
+            "name": "Minigame",
             "id": "f06e5dc7-547a-4f16-aabc-270f926ac71c",
             "actions": [
                 {
@@ -18,14 +18,6 @@
                     "type": "Value",
                     "id": "ff4975bb-f8b7-4d77-adf2-51913630b108",
                     "expectedControlType": "Key",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "ReadyGame",
-                    "type": "Button",
-                    "id": "6775234e-9c01-4296-8d8d-1efcd4268d78",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -107,15 +99,31 @@
                     "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "21b2df99-46d4-4982-bdf1-a63ad2d56cba",
+            "actions": [
+                {
+                    "name": "ReadyPlayer",
+                    "type": "Button",
+                    "id": "18e777e6-ab5d-4ba1-9509-ba12c4ca1348",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "49d047e4-0669-4121-9833-887b31ecda07",
+                    "id": "66e0f3ac-520b-40ed-a128-9650599eeb1e",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "ReadyGame",
+                    "action": "ReadyPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

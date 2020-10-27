@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93fdcbf7379fd34fa0a71b90534af8b, type: 3}
   m_Name: P2Ready
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   value: 0
+=======
+  value: 1
+>>>>>>> Stashed changes
