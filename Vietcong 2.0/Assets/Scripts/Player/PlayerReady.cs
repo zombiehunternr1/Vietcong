@@ -13,22 +13,25 @@ public class PlayerReady : MonoBehaviour
 
     private bool RediedUp;
 
+    private PlayerInput Input;
+
     //Sets the value to false when starting the game.
     private void Awake()
     {
         Ready.value = false;
+        Input = GetComponent<PlayerInput>();
     }
 
     //This function when called it checks if the boolean RediedUp isn't true yet, if so it sets the RediedUp and Ready boolean to true, changes the color from red to green and changes the action map from UI to Minigame.
     //At last it calls the function "CheckAllPlayersReady".
     private void OnReadyPlayer()
     {
-        //Players can toggle between setting themselves ready and unready.
         if (!RediedUp)
         {
             RediedUp = true;
             Ready.value = true;
             ReadyUI.color = Color.green;
+            Input.SwitchCurrentActionMap("Minigame");
             ReadyList.CheckAllPlayersReady();          
         }
     }
