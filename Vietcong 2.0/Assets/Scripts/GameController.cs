@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         PlayerTotal.ResetList();
         //Clears the ranklist before reloading the scene.
         RankPosition.ResetList();
-        //Reloads the scene.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Loads in the Ranking scene.
+        SceneManager.LoadScene("Ranking", LoadSceneMode.Single);
     }
 }

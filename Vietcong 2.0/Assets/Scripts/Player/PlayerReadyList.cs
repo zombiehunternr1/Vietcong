@@ -9,7 +9,7 @@ public class PlayerReadyList : MonoBehaviour
     public List<BoolReference> Ready = new List<BoolReference>();
     public SetupGame StartGame;
 
-    int PlayerBool = 1;
+    int PlayerBool;
     int Count;
 
     void Awake()
@@ -17,7 +17,7 @@ public class PlayerReadyList : MonoBehaviour
         //Gets all the boolean valuables, converts them into an int and stores them in the variable PlayerBool.
         foreach (BoolReference player in Ready)
         {
-            PlayerBool += Convert.ToInt32(player.value);
+            PlayerBool += Convert.ToInt32(player);
         }
     }
 
@@ -28,12 +28,11 @@ public class PlayerReadyList : MonoBehaviour
         if(Count != PlayerBool)
         {
             Count++;
-        }
-       
-         if (Count == PlayerTotal.PlayerList.Count)
-         {
-             StartGame.ReadyGame();
-         }
-         
+
+            if (Count == PlayerTotal.PlayerList.Count)
+            {
+                StartGame.ReadyGame();
+            }
+        }      
     }
 }
