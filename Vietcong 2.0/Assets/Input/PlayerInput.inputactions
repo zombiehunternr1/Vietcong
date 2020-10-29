@@ -39,6 +39,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "IncreasePlayerAmount",
+                    "type": "Button",
+                    "id": "01230db3-df9b-4c4d-ac9f-dfc59a2e9a0e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreasePlayerAmount",
+                    "type": "Button",
+                    "id": "437b9ec1-4cf4-46f2-a18c-38af165769fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -50,6 +66,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "ReadyPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0425700b-44f8-4b86-8eee-dafafd37f33b",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "IncreasePlayerAmount",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5006bc7-883a-4e23-ab1a-41860e0adee0",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DecreasePlayerAmount",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

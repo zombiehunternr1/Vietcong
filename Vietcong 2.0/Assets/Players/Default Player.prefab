@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNameText: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 11400000, guid: 4d60c67df9aa2494a8fa63b6471ea450, type: 2}
   CanvasDisplay: {fileID: 0}
 --- !u!1 &8372889564666255719
 GameObject:
@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8372889565026475325}
   - component: {fileID: 5384781906405663813}
   - component: {fileID: 5463409624603268552}
+  - component: {fileID: 4515781904395332351}
   m_Layer: 0
   m_Name: Default Player
   m_TagString: Untagged
@@ -307,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: dc527ddcf70516e41be1fa187f3223c5,
+  m_Actions: {fileID: -944628639613478452, guid: 09514bc16e56e554487dd8202699bd6c,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
@@ -353,7 +354,7 @@ MonoBehaviour:
     m_ActionName: Vietcong/Reset[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
-  m_DefaultActionMap: Vietcong
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8372889565026475325
@@ -393,6 +394,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcc6e62ad942794987cb59cc12cb1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4515781904395332351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372889565026475314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebde98287083be946bca1400c4976a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ready: {fileID: 0}
+  ReadyUI: {fileID: 0}
+  ReadyList: {fileID: 0}
 --- !u!1 &8372889566006106457
 GameObject:
   m_ObjectHideFlags: 0

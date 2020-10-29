@@ -21,6 +21,17 @@ public class PlayerReadyList : MonoBehaviour
         }
     }
 
+    public void ClearReadyBool()
+    {
+        Ready.Clear();
+    }
+
+    //Adds the current active player's readybool to the list.
+    public void AddReadyBool(BoolReference BR)
+    {
+        Ready.Add(BR);
+    }
+
     //Function checks if the Count variable is not equal to the PlayerBool variable once a player has readied up. If so that means a player readied up and it ands one to the Count variable.
     //Once the Count variable is equal to the amount of active players it means that all players have readied up and the game will start.
     public void CheckAllPlayersReady()

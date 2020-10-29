@@ -52,6 +52,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""IncreasePlayerAmount"",
+                    ""type"": ""Button"",
+                    ""id"": ""01230db3-df9b-4c4d-ac9f-dfc59a2e9a0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DecreasePlayerAmount"",
+                    ""type"": ""Button"",
+                    ""id"": ""437b9ec1-4cf4-46f2-a18c-38af165769fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -63,6 +79,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""ReadyPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0425700b-44f8-4b86-8eee-dafafd37f33b"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""IncreasePlayerAmount"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5006bc7-883a-4e23-ab1a-41860e0adee0"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""DecreasePlayerAmount"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -89,6 +127,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_ReadyPlayer = m_UI.FindAction("ReadyPlayer", throwIfNotFound: true);
+        m_UI_IncreasePlayerAmount = m_UI.FindAction("IncreasePlayerAmount", throwIfNotFound: true);
+        m_UI_DecreasePlayerAmount = m_UI.FindAction("DecreasePlayerAmount", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -172,11 +212,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_ReadyPlayer;
+    private readonly InputAction m_UI_IncreasePlayerAmount;
+    private readonly InputAction m_UI_DecreasePlayerAmount;
     public struct UIActions
     {
         private @PlayerInputActions m_Wrapper;
         public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ReadyPlayer => m_Wrapper.m_UI_ReadyPlayer;
+        public InputAction @IncreasePlayerAmount => m_Wrapper.m_UI_IncreasePlayerAmount;
+        public InputAction @DecreasePlayerAmount => m_Wrapper.m_UI_DecreasePlayerAmount;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -189,6 +233,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @ReadyPlayer.started -= m_Wrapper.m_UIActionsCallbackInterface.OnReadyPlayer;
                 @ReadyPlayer.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnReadyPlayer;
                 @ReadyPlayer.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnReadyPlayer;
+                @IncreasePlayerAmount.started -= m_Wrapper.m_UIActionsCallbackInterface.OnIncreasePlayerAmount;
+                @IncreasePlayerAmount.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnIncreasePlayerAmount;
+                @IncreasePlayerAmount.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnIncreasePlayerAmount;
+                @DecreasePlayerAmount.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
+                @DecreasePlayerAmount.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
+                @DecreasePlayerAmount.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -196,6 +246,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @ReadyPlayer.started += instance.OnReadyPlayer;
                 @ReadyPlayer.performed += instance.OnReadyPlayer;
                 @ReadyPlayer.canceled += instance.OnReadyPlayer;
+                @IncreasePlayerAmount.started += instance.OnIncreasePlayerAmount;
+                @IncreasePlayerAmount.performed += instance.OnIncreasePlayerAmount;
+                @IncreasePlayerAmount.canceled += instance.OnIncreasePlayerAmount;
+                @DecreasePlayerAmount.started += instance.OnDecreasePlayerAmount;
+                @DecreasePlayerAmount.performed += instance.OnDecreasePlayerAmount;
+                @DecreasePlayerAmount.canceled += instance.OnDecreasePlayerAmount;
             }
         }
     }
@@ -216,5 +272,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface IUIActions
     {
         void OnReadyPlayer(InputAction.CallbackContext context);
+        void OnIncreasePlayerAmount(InputAction.CallbackContext context);
+        void OnDecreasePlayerAmount(InputAction.CallbackContext context);
     }
 }
