@@ -68,10 +68,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(DelayResetCount);
         //Unfreezes the time.
         Time.timeScale = 1;
-        //Clears the playerlist before reloading the scene.
-        PlayerTotal.ResetList();
-        //Clears the ranklist before reloading the scene.
-        RankPosition.ResetList();
         //Loads in the Ranking scene.
         SceneManager.LoadScene("Ranking", LoadSceneMode.Single);
     }
