@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System.Linq;
 
@@ -68,7 +67,8 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(DelayResetCount);
         //Unfreezes the time.
         Time.timeScale = 1;
-        //Loads in the Ranking scene.
-        SceneManager.LoadScene("Ranking", LoadSceneMode.Single);
+        //Actication function from other script.
+        var DisplayRankScript = GetComponent<DisplayRankOrder>();
+        DisplayRankScript.DisplayRank();
     }
 }

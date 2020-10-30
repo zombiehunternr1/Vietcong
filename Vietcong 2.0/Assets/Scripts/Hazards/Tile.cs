@@ -35,8 +35,8 @@ public class Tile : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             //Destroys the temporarely killzone.
             Destroy(TempKillZone);
-            //Destroys the tile that is stored in the variable DTile.
-            Destroy(this.gameObject);
+            //Disables the tile that is stored in the variable DTile.
+            gameObject.SetActive(false);
         }
         if(IsHit == true)
         {
