@@ -7,6 +7,7 @@ using System.Linq;
 public class GameController : MonoBehaviour
 {
     public float DelayResetCount;
+    public DisplayRankOrder RankOrderScript;
 
     void Start()
     {        
@@ -50,11 +51,9 @@ public class GameController : MonoBehaviour
             //Gets the last player in the list PlayerList and at it in the gameobject variable LastPlayer.
             GameObject LastPlayer = PlayerTotal.PlayerList[0];
             //Adds the last standing player to the ranklist.
-            RankPosition.RankList.Add(LastPlayer);
-            //Gets the script DisplayRank and stores it in the variable ShowResult.
-            var ShowResult = GetComponent<DisplayRank>();
-            //Displays the result of the players who came on top.
-            ShowResult.RankDisplay();
+            RankPositionPlayer.RankList.Add(LastPlayer);
+            //Disables the name display above the player.
+            LastPlayer.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;
             //Starts the coroutine DelayReset and freezes the time.
             StartCoroutine(DelayReset());
             Time.timeScale = 0;
@@ -64,11 +63,10 @@ public class GameController : MonoBehaviour
     //Before restarting the scene the code waits the amount of seconds before executing ferther that is stored in the float variable DelayResetCount.
     IEnumerator DelayReset()
     {
+        //Calls the function DisplayRank to display the Rank order.
+        RankOrderScript.DisplayRank();
         yield return new WaitForSecondsRealtime(DelayResetCount);
         //Unfreezes the time.
-        Time.timeScale = 1;
-        //Actication function from other script.
-        var DisplayRankScript = GetComponent<DisplayRankOrder>();
-        DisplayRankScript.DisplayRank();
+        Time.timeScale = 1;   
     }
 }

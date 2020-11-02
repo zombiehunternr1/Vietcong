@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class RankPosition
+public static class RankPositionPlayer
 {
     //Creates a statci list that holds all the players rank position.
     public static List<GameObject> RankList = new List<GameObject>();

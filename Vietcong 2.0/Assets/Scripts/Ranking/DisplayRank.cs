@@ -14,12 +14,12 @@ public class DisplayRank : MonoBehaviour
         string PlayerRank = "";
 
         //Reverses the rank list so I have the players in the order in which they died.
-        RankPosition.RankList.Reverse();
+        RankPositionPlayer.RankList.Reverse();
 
         //Goes over each player in the ranklist and displays them in the DisplayRankText.
-        for (Count = 1; Count <= RankPosition.RankList.Count; Count++)
+        for (Count = 1; Count <= RankPositionPlayer.RankList.Count; Count++)
         {
-            PlayerRank += Count + "." + " Player " + RankPosition.RankList[i].GetComponent<PlayerFinder>().PlayerInfo.ID + "\n";
+            PlayerRank += Count + "." + " Player " + RankPositionPlayer.RankList[i].GetComponent<PlayerFinder>().PlayerInfo.ID + "\n";
             i++;
         }
         DisplayRankText.text = PlayerRank;
