@@ -35,30 +35,21 @@ public class DisplayRankOrder : MonoBehaviour
 
     public void DisplayRank()
     {
+        //Sets the bool FadedToBlack to true.
+        FadedToBlack = true;
+
+        StartCoroutine(FadeToBlackAndOpaque());
+
         foreach (var player in PlayerTotal.PlayerList)
         {
             player.gameObject.SetActive(false);
         }
-
-        //Starts the couroutine to fade between black and opaque.
-        StartCoroutine(FadeToBlackAndOpaque());
 
         //Sets the amount of players active according to the amount of active players that is stored in the variable SortedList.
         for (int i = 0; i < ActivePlayers; i++)
         {
             SortedList[i].gameObject.SetActive(true);
         }
-
-        //Teleport players to fixed ranked location
-        //Make scene visible
-        StartCoroutine(FadeToBlackAndOpaque());
-
-        //Resets the Player and Rank list.
-        PlayerTotal.ResetList();
-        RankPositionPlayer.ResetList();
-
-        //Loads in the Start scene.
-        //SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
 
     //This coroutine switches the panel from black top opaque and vice versa.
@@ -76,8 +67,11 @@ public class DisplayRankOrder : MonoBehaviour
                 FadeAmount = FadingColor.a + (FadingSpeed * Time.deltaTime);
                 FadingColor = new Color(FadingColor.r, FadingColor.g, FadingColor.g, FadeAmount);
                 FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
-                yield return null;
+                yield return null;               
             }
+            yield return new WaitForSeconds(FadingSpeed);
+            FadedToBlack = false;
+            StartCoroutine(FadeToBlackAndOpaque());
         }
         else
         {
@@ -88,6 +82,19 @@ public class DisplayRankOrder : MonoBehaviour
                 FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
                 yield return null;
             }
+            StartCoroutine(SceneSwitch());
         }
+    }
+
+    //This coroutine resets the Rank and Player list and loads the Start Scene.
+    IEnumerator SceneSwitch()
+    {
+        yield return new WaitForSeconds(FadingSpeed);
+        //Resets the Player and Rank list.
+        PlayerTotal.ResetList();
+        RankPositionPlayer.ResetList();
+
+        //Loads in the Start scene.
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
 }

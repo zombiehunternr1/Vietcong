@@ -41,7 +41,7 @@ public class Projectileshooter : MonoBehaviour
     }
 
     //Coroutine that creates the new projectile.
-    IEnumerator CreateProjectile()
+    public IEnumerator CreateProjectile()
     {
         //Keeps looping infinitely
         while(true)

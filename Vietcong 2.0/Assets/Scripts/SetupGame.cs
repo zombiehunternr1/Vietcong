@@ -61,7 +61,7 @@ public class SetupGame : MonoBehaviour
 
 
     //This function gets called to disable all the hazards.
-    void DisableHazards()
+    public void DisableHazards()
     {
         //Goes over each item stored in the HazardList.
         foreach (Transform hazard in HazardList)
@@ -81,7 +81,7 @@ public class SetupGame : MonoBehaviour
         }
     }
     //This function gets called to disable all the players.
-    void DisablePlayers()
+    public void DisablePlayers()
     {
         //Goes over each item stored in the list PlayerList and adds the transform in the transform player variable.
         foreach (Transform player in PlayerList)
@@ -137,6 +137,24 @@ public class SetupGame : MonoBehaviour
         DescriptionPanel.gameObject.SetActive(false);
         PlayerNames.gameObject.SetActive(true);
         StartCoroutine(PrepareGame());
+    }
+
+    //This function gets called when the game ends. It stops all the coroutines of all the hazards.
+    public void StopGame()
+    {
+        foreach(Transform Hazard in HazardList)
+        {
+            if (Hazard.GetComponent<Projectileshooter>())
+            {
+                ProjectileShooterScript = Hazard.GetComponent<Projectileshooter>();
+                ProjectileShooterScript.StopAllCoroutines();
+            }
+            if (Hazard.GetComponent<TileManager>())
+            {
+                TileManagerScript = Hazard.GetComponent<TileManager>();
+                TileManagerScript.StopAllCoroutines();
+            }
+        }
     }
 
     //Starts counting down before starting, once it hits "GO!" the function StartGame will be called.

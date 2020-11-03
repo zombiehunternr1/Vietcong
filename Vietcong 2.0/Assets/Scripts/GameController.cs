@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public float DelayResetCount;
     public DisplayRankOrder RankOrderScript;
+    public SetupGame StopGame;
 
     void Start()
     {        
@@ -56,17 +57,16 @@ public class GameController : MonoBehaviour
             LastPlayer.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;
             //Starts the coroutine DelayReset and freezes the time.
             StartCoroutine(DelayReset());
-            Time.timeScale = 0;
         }
     }
 
     //Before restarting the scene the code waits the amount of seconds before executing ferther that is stored in the float variable DelayResetCount.
     IEnumerator DelayReset()
     {
+        //Calls the function StopGame to stop all the hazards.
+        StopGame.StopGame();
         //Calls the function DisplayRank to display the Rank order.
         RankOrderScript.DisplayRank();
-        yield return new WaitForSecondsRealtime(DelayResetCount);
-        //Unfreezes the time.
-        Time.timeScale = 1;   
+        yield return new WaitForSecondsRealtime(DelayResetCount);  
     }
 }
