@@ -53,6 +53,8 @@ public class GameController : MonoBehaviour
             GameObject LastPlayer = PlayerTotal.PlayerList[0];
             //Adds the last standing player to the ranklist.
             RankPositionPlayer.RankList.Add(LastPlayer);
+            //Reverses the list so the rankorder gets displayed from first to last place.
+            RankPositionPlayer.RankList.Reverse();
             //Disables the name display above the player.
             LastPlayer.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;
             //Starts the coroutine DelayReset and freezes the time.

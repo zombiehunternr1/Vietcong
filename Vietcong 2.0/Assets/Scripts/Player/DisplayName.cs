@@ -7,7 +7,6 @@ public class DisplayName : MonoBehaviour
 {
     public Text PlayerNameText;
     public PlayerInfo Player;
-    public Canvas CanvasDisplay;
 
     // Start is called before the first frame update
     void Start()

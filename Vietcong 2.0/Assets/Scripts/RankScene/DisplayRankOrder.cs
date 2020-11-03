@@ -15,12 +15,14 @@ public class DisplayRankOrder : MonoBehaviour
     private List<Transform> RankSpotList = new List<Transform>();
     private List<Transform> SortedList = new List<Transform>();
 
+    private Material PlayerColor;
+    private int ID;
+
     void Awake()
     {
         Transform[] TempRank = GetComponentsInChildren<Transform>();
 
         //Gets all the transform elements and stores them in the list RankSpotList that has the script PlayerRank attached to itself.
-        //After that we disable the object.
         foreach (Transform Rankspot in TempRank)
         {
             if (Rankspot.GetComponent<PlayerRank>())
@@ -35,21 +37,17 @@ public class DisplayRankOrder : MonoBehaviour
 
     public void DisplayRank()
     {
+        //Sets the gameobject active.
+        gameObject.SetActive(true);
         //Sets the bool FadedToBlack to true.
         FadedToBlack = true;
 
-        StartCoroutine(FadeToBlackAndOpaque());
-
-        foreach (var player in PlayerTotal.PlayerList)
+        //Goes over each gameobject in the ranklist and disables it.
+        foreach (var player in RankPositionPlayer.RankList)
         {
             player.gameObject.SetActive(false);
         }
-
-        //Sets the amount of players active according to the amount of active players that is stored in the variable SortedList.
-        for (int i = 0; i < ActivePlayers; i++)
-        {
-            SortedList[i].gameObject.SetActive(true);
-        }
+        StartCoroutine(FadeToBlackAndOpaque());
     }
 
     //This coroutine switches the panel from black top opaque and vice versa.
@@ -69,6 +67,19 @@ public class DisplayRankOrder : MonoBehaviour
                 FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
                 yield return null;               
             }
+            //Sets the amount of players active in the SortedList according to the amount of players in the Ranklist.
+            int i = 0;
+            foreach(var player in RankPositionPlayer.RankList)
+            {
+                ID = player.gameObject.GetComponent<PlayerFinder>().PlayerInfo.ID;
+                PlayerColor = player.gameObject.GetComponent<PlayerFinder>().PlayerInfo.PlayerColor;
+                SortedList[i].GetComponent<Renderer>().material = PlayerColor;
+                SortedList[i].GetComponentInChildren<PlayerRank>().RankName.text = "Player " + ID.ToString();
+                SortedList[i].GetComponentInChildren<PlayerRank>().PositionNumber.text.ToString();
+                SortedList[i].GetComponentInChildren<PlayerRank>().PositionNumber.gameObject.SetActive(true);
+                SortedList[i].gameObject.SetActive(true);
+                i++;
+            }           
             yield return new WaitForSeconds(FadingSpeed);
             FadedToBlack = false;
             StartCoroutine(FadeToBlackAndOpaque());
