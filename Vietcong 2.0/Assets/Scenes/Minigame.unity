@@ -412,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -1224,7 +1224,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -3201,7 +3201,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -5045,7 +5045,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: UI
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -5341,7 +5341,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
@@ -6242,7 +6242,7 @@ PrefabInstance:
     - target: {fileID: 8372889565026475324, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Minigame
+      value: 21b2df99-46d4-4982-bdf1-a63ad2d56cba
       objectReference: {fileID: 0}
     - target: {fileID: 8372889566006106458, guid: a578bb45e24b89f408cfa1e420518cb3,
         type: 3}
