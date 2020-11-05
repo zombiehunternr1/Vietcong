@@ -12,9 +12,13 @@ public class SetupGame : MonoBehaviour
     public RectTransform DescriptionPanel;
     public RectTransform PlayerNames;
 
+    public RectTransform FadeToBlackPanel;
+    private int FadingSpeed = 1;
+    private bool FadedToOpaque = true;
+
     TileManager TileManagerScript;
     Projectileshooter ProjectileShooterScript;
-    Movement PlayerMovementScript;
+    Movement PlayerMovementScript; 
 
     // Start is called before the first frame update
     void Start()
@@ -54,9 +58,10 @@ public class SetupGame : MonoBehaviour
                 PlayerList.Add(player);
             }
         }
-        //Disables all the hazards and player.
+        //Disables all the hazards and player and starts the coroutine FadeToOpaque.
         DisableHazards();
         DisablePlayers();
+        StartCoroutine(FadeToOpaque());
     }
 
 
@@ -77,7 +82,7 @@ public class SetupGame : MonoBehaviour
             {
                 ProjectileShooterScript = hazard.GetComponent<Projectileshooter>();
                 ProjectileShooterScript.enabled = false;
-            }          
+            }
         }
     }
     //This function gets called to disable all the players.
@@ -142,7 +147,7 @@ public class SetupGame : MonoBehaviour
     //This function gets called when the game ends. It stops all the coroutines of all the hazards.
     public void StopGame()
     {
-        foreach(Transform Hazard in HazardList)
+        foreach (Transform Hazard in HazardList)
         {
             if (Hazard.GetComponent<Projectileshooter>())
             {
@@ -159,7 +164,7 @@ public class SetupGame : MonoBehaviour
 
     //Starts counting down before starting, once it hits "GO!" the function StartGame will be called.
     IEnumerator PrepareGame()
-    {   
+    {
         CountdownText.text = "3";
         yield return new WaitForSeconds(1);
         CountdownText.text = "2";
@@ -170,6 +175,28 @@ public class SetupGame : MonoBehaviour
         EnablePlayers();
         yield return new WaitForSeconds(1);
         EnableHazards();
-        CountdownText.text = "";      
-    } 
+        CountdownText.text = "";
+    }
+
+    //This coroutine switches the panel from black to opaque.
+    IEnumerator FadeToOpaque()
+    {
+        //Gets the color component from the panel and stores it in the FadingColor variable.
+        Color FadingColor = FadeToBlackPanel.GetComponent<Image>().color;
+        float FadeAmount;
+        if (FadedToOpaque)
+        {
+            //Keeps looping until the alpha color of the image isn't smaller then 0.
+            while (FadeToBlackPanel.GetComponent<Image>().color.a > 0)
+            {
+                FadeAmount = FadingColor.a - (FadingSpeed * Time.deltaTime);
+                FadingColor = new Color(FadingColor.r, FadingColor.g, FadingColor.g, FadeAmount);
+                FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
+                yield return null;
+            }
+            yield return new WaitForSeconds(FadingSpeed);
+            FadedToOpaque = false;
+            StartCoroutine(FadeToOpaque());
+        }
+    }
 }

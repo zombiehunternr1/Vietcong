@@ -1454,6 +1454,7 @@ MonoBehaviour:
   CountdownText: {fileID: 1655924035}
   DescriptionPanel: {fileID: 390848935}
   PlayerNames: {fileID: 2069013650}
+  FadeToBlackPanel: {fileID: 1780002014}
 --- !u!1001 &279391500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8145,7 +8146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0}
+  m_Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
