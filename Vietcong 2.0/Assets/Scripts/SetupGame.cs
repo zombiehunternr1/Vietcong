@@ -18,11 +18,25 @@ public class SetupGame : MonoBehaviour
 
     TileManager TileManagerScript;
     Projectileshooter ProjectileShooterScript;
-    Movement PlayerMovementScript; 
+    Movement PlayerMovementScript;
+
+    AudioClip PlayCountdown;
+    public AudioSource CountdownSource;
+
+    AudioClip PlayBackground;
+    public AudioSource BackgroundSource;
+    private float FadeAudioSpeed = 1.5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Stores the audiosource clip in the variable PlayCountdown.       
+        PlayCountdown = CountdownSource.clip;
+        //Stores the audiosource clip in the variable PlayBackground.
+        PlayBackground = BackgroundSource.clip;
+        //Plays the background music.
+        BackgroundSource.Play();
+
         //Disables the playernames panel so the playernames won't be displayed while the description panel is still active.
         PlayerNames.gameObject.SetActive(false);
 
@@ -144,7 +158,7 @@ public class SetupGame : MonoBehaviour
         StartCoroutine(PrepareGame());
     }
 
-    //This function gets called when the game ends. It stops all the coroutines of all the hazards.
+    //This function gets called when the game ends. It stops all the coroutines of all the hazards and starts the coroutine FadeOutMusic. 
     public void StopGame()
     {
         foreach (Transform Hazard in HazardList)
@@ -160,11 +174,13 @@ public class SetupGame : MonoBehaviour
                 TileManagerScript.StopAllCoroutines();
             }
         }
+        StartCoroutine(FadeOutMusic());
     }
 
     //Starts counting down before starting, once it hits "GO!" the function StartGame will be called.
     IEnumerator PrepareGame()
     {
+        CountdownSource.PlayOneShot(PlayCountdown, 0.7f);
         CountdownText.text = "3";
         yield return new WaitForSeconds(1);
         CountdownText.text = "2";
@@ -198,5 +214,15 @@ public class SetupGame : MonoBehaviour
             FadedToOpaque = false;
             StartCoroutine(FadeToOpaque());
         }
+    }
+
+    //This coroutine slowly fades out the background music.
+    IEnumerator FadeOutMusic()
+    {
+        while(BackgroundSource.volume > 0.01f)
+        {
+            BackgroundSource.volume -= Time.deltaTime / FadeAudioSpeed;
+            yield return null;
+        }     
     }
 }
