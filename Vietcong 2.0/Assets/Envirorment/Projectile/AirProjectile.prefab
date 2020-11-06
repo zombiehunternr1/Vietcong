@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PSpeed: 800
-  PLifespan: 1
   MortarSource: {fileID: -1464187487425176280}
 --- !u!54 &-1752197501885364798
 Rigidbody:
@@ -139,7 +138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09cc3a36f06836f47b6ffc33f103bbe4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

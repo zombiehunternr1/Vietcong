@@ -10,10 +10,15 @@ public class Projectile : MonoBehaviour
     public float PLifespan = 60f; 
     private Rigidbody Rigid;
 
+    private AudioClip PlayDying;
+    public AudioSource DyingSource;
+
     void Awake()
     {
         //Gets the rigidbody of the projectile.
         Rigid = GetComponent<Rigidbody>();
+        //Gets the clip from the audio source DyingSource and stores it in the variable PlayDying.
+        PlayDying = DyingSource.clip;
     }
 
     void Start()
@@ -27,10 +32,14 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Checks if the projectile hits a player. If so it disables the object.
+        //Checks if the projectile hits a player. If so it plays the dying sound effect and disables the object if the sound effect isn't playing anymore.
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
         {
-            gameObject.SetActive(false);
+            DyingSource.PlayOneShot(PlayDying, 0.7f);
+            if (!DyingSource.isPlaying)
+            {
+                gameObject.SetActive(false);
+            }            
         }
     }
 }
