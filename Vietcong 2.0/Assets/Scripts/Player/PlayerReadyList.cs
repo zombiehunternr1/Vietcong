@@ -8,7 +8,7 @@ using System.Linq;
 
 public class PlayerReadyList : MonoBehaviour
 {
-    public List<BoolReference> Ready = new List<BoolReference>();
+    public PlayerAssigner Ready;
     public SetupGame StartGame;
 
     private List<Text> ReadyText = new List<Text>();
@@ -49,9 +49,12 @@ public class PlayerReadyList : MonoBehaviour
             SortedList[i].gameObject.SetActive(true);
             SortedList[i].GetComponentInChildren<PlayerReady>().ReadyUI.enabled = true;
         }
+    }
 
+    public void AddBool()
+    {
         //Gets all the boolean valuables, converts them into an int and stores them in the variable PlayerBool.
-        foreach (BoolReference player in Ready)
+        foreach (BoolReference player in Ready._BoolReferenceList)
         {
             PlayerBool += Convert.ToInt32(player);
         }

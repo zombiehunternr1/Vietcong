@@ -15,10 +15,9 @@ public class PlayerReady : MonoBehaviour
 
     private PlayerInput Input;
 
-    //Sets the value to false when starting the game.
+    //Gets the playerInput component and stores it in the PlayerInput variable Input.
     private void Awake()
     {
-        Ready.value = false;
         Input = GetComponent<PlayerInput>();
     }
 
@@ -32,7 +31,7 @@ public class PlayerReady : MonoBehaviour
             Ready.value = true;
             ReadyUI.color = Color.green;
             Input.SwitchCurrentActionMap("Minigame");
-            ReadyList.CheckAllPlayersReady();          
+            ReadyList.CheckAllPlayersReady();     
         }
     }
 }

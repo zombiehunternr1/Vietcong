@@ -10,39 +10,6 @@ public class GameController : MonoBehaviour
     public DisplayRankOrder RankOrderScript;
     public SetupGame StopGame;
 
-    void Start()
-    {        
-        //Stores the amount of active players in the variable ActivePlayers.
-        int ActivePlayers = HowManyPlayers.HowManyActivePlayers;
-
-        //Loops over each player object in the playerlist and de-activates the playerobject and disables the name display above the player.
-        foreach (var player in PlayerTotal.PlayerList)
-        {
-            player.SetActive(false);
-            player.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;    
-        }
-
-        //Get all the items in the playerlist and order the gameobjects by name, set them in a list and store this list in the variable SortedList.
-        var SortedList = PlayerTotal.PlayerList.OrderBy(go => go.name).ToList();
-
-        //Sets the amount of players active according to the amount of active players that is stored in the variable SortedList.
-        //Enables the nameDiplay above the player.
-        for (int i = 0; i < ActivePlayers; i++)
-        {
-            SortedList[i].SetActive(true);
-            SortedList[i].GetComponentInChildren<DisplayName>().PlayerNameText.enabled = true;
-        }
-
-        //Goes over each playerobject in the list SortedList and checks if this playerobject is false. If so it removes this playerobject from the playerlist.
-        foreach(var player in SortedList)
-        {
-            if (player.activeSelf == false)
-            {
-                PlayerTotal.PlayerList.Remove(player);
-            }
-        }
-    }
-
     //This function gets called everytime a player gets hit.
     public void EndGame()
     {

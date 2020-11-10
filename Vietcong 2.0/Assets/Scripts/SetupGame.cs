@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SetupGame : MonoBehaviour
 {
     private List<Transform> HazardList = new List<Transform>();
-    private List<Transform> PlayerList = new List<Transform>();
 
     public Text CountdownText;
     public RectTransform DescriptionPanel;
@@ -42,7 +41,6 @@ public class SetupGame : MonoBehaviour
 
         //Adds all the children components from the parent to the array.
         Transform[] TempHazard = GetComponentsInChildren<Transform>();
-        Transform[] TempPlayer = GetComponentsInChildren<Transform>();
 
         //Goes over each item in the variable TempHazard and adds it to the list HazardList.
         foreach (Transform hazard in TempHazard)
@@ -57,21 +55,7 @@ public class SetupGame : MonoBehaviour
             {
                 HazardList.Add(hazard);
             }
-        }
-        //Goes over each item in the variable TempPlayer and adds it to the list PlayerList.
-        foreach (Transform player in TempPlayer)
-        {
-            //Checks if any of the items in the array TempPlayer has the script Movement attached to itself, if so add the item to the PlayerList.
-            if (player.GetComponent<Movement>())
-            {
-                PlayerList.Add(player);
-            }
-            //Checks if any of the items in the array TempPlayer has the script Display name attached to itself, if so add the item to the PlayerList.
-            if (player.GetComponent<DisplayName>())
-            {
-                PlayerList.Add(player);
-            }
-        }
+        }      
         //Disables all the hazards and player and starts the coroutine FadeToOpaque.
         DisableHazards();
         DisablePlayers();
@@ -102,8 +86,8 @@ public class SetupGame : MonoBehaviour
     //This function gets called to disable all the players.
     public void DisablePlayers()
     {
-        //Goes over each item stored in the list PlayerList and adds the transform in the transform player variable.
-        foreach (Transform player in PlayerList)
+        //Goes over each item stored in the list PlayerList and adds the GameObject in the gameobject player variable.
+        foreach (GameObject player in PlayerTotal.PlayerList)
         {
             //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and disables the script.
             if (player.GetComponent<Movement>())
@@ -137,8 +121,8 @@ public class SetupGame : MonoBehaviour
     //This function gets called to enable all the players.
     void EnablePlayers()
     {
-        //Goes over each item stored in the list PlayerList and adds the transform in the transform player variable.
-        foreach (Transform player in PlayerList)
+        //Goes over each item stored in the list PlayerList and adds the gameobject in the GameObject player variable.
+        foreach (GameObject player in PlayerTotal.PlayerList)
         {
             //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and enables the script.
             if (player.GetComponent<Movement>())
