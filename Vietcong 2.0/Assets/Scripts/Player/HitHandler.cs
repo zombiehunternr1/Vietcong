@@ -19,21 +19,16 @@ public class HitHandler : MonoBehaviour
         PlayerTotal.RemovePlayer(gameObject);
     }
 
-    //This function disables the player.
+    //This function disables the player name and calls the function AssignRank.
     void DisablePlayer()
     {
-        gameObject.SetActive(false);
-    }
-    //This function disables the text displayed above the player.
-    void DisableName()
-    { 
         NameDisplay.DisableNameDisplay();
+        AssignRank();      
     }
-    //This function execute the function above in a certain order.
+
+    //This function calls the DisablePlayer function once called.
     public void PlayerHit()
-    {
-        AssignRank();
-        DisableName();
+    {     
         DisablePlayer();
     }
 }
