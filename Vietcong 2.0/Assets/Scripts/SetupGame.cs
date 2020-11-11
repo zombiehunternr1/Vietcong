@@ -200,13 +200,17 @@ public class SetupGame : MonoBehaviour
         }
     }
 
-    //This coroutine slowly fades out the background music.
+    //This coroutine slowly fades out the background music. If it's below or equal to 0.01f it stops the background music.
     IEnumerator FadeOutMusic()
     {
         while(BackgroundSource.volume > 0.01f)
         {
             BackgroundSource.volume -= Time.deltaTime / FadeAudioSpeed;
             yield return null;
-        }     
+        }
+        if(BackgroundSource.volume <= 0.01f)
+        {
+            BackgroundSource.Stop();
+        }        
     }
 }
