@@ -7550,7 +7550,7 @@ MonoBehaviour:
   - {fileID: 1350558464}
   - {fileID: 1623803422}
   - {fileID: 900408182}
-  Prefab: {fileID: 8372889565026475314, guid: a578bb45e24b89f408cfa1e420518cb3, type: 3}
+  Prefab: {fileID: 7401655956396292061, guid: e948a0ad365d80044aca209f1232ee94, type: 3}
   ReadyList: {fileID: 1210192543}
   InputManager: {fileID: 1777917321}
 --- !u!114 &1777917321
@@ -7702,7 +7702,7 @@ Transform:
   - {fileID: 274275032}
   - {fileID: 1400926915}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1797247171
 PrefabInstance:
@@ -9444,7 +9444,7 @@ PrefabInstance:
     - target: {fileID: 8026113445321071197, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8026113445321071197, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
         type: 3}

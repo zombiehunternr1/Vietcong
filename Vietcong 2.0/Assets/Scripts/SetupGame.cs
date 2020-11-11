@@ -89,11 +89,11 @@ public class SetupGame : MonoBehaviour
         //Goes over each item stored in the list PlayerList and adds the GameObject in the gameobject player variable.
         foreach (GameObject player in PlayerTotal.PlayerList)
         {
-            //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and disables the script.
+            //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and sets the _CanMove boolean to false;
             if (player.GetComponent<Movement>())
             {
                 PlayerMovementScript = player.GetComponent<Movement>();
-                PlayerMovementScript.enabled = false;
+                PlayerMovementScript._canMove = false;
             }
         }
     }
@@ -124,11 +124,11 @@ public class SetupGame : MonoBehaviour
         //Goes over each item stored in the list PlayerList and adds the gameobject in the GameObject player variable.
         foreach (GameObject player in PlayerTotal.PlayerList)
         {
-            //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and enables the script.
+            //Checks if the item in the PlayerList has the Movement script attched to itself, if so add the item to the variable PlayerMovementScript and sets the _canMove boolean to true.
             if (player.GetComponent<Movement>())
             {
                 PlayerMovementScript = player.GetComponent<Movement>();
-                PlayerMovementScript.enabled = true;
+                PlayerMovementScript._canMove = true;
             }
         }
     }
