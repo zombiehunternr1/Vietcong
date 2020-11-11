@@ -9,7 +9,8 @@ public class DisplayRankOrder : MonoBehaviour
 {
     public RectTransform FadeToBlackPanel;
     public bool FadedToBlack;
-    public int FadingSpeed = 5;
+    public int FadeInMinigame = 5;
+    public float DelayToMenu = 15;
 
     private int ActivePlayers = HowManyPlayers.HowManyActivePlayers;
     private List<Transform> RankSpotList = new List<Transform>();
@@ -62,7 +63,7 @@ public class DisplayRankOrder : MonoBehaviour
         {
             while (FadeToBlackPanel.GetComponent<Image>().color.a < 1)
             {
-                FadeAmount = FadingColor.a + (FadingSpeed * Time.deltaTime);
+                FadeAmount = FadingColor.a + (FadeInMinigame * Time.deltaTime);
                 FadingColor = new Color(FadingColor.r, FadingColor.g, FadingColor.g, FadeAmount);
                 FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
                 yield return null;               
@@ -80,7 +81,7 @@ public class DisplayRankOrder : MonoBehaviour
                 SortedList[i].gameObject.SetActive(true);
                 i++;
             }           
-            yield return new WaitForSeconds(FadingSpeed);
+            yield return new WaitForSeconds(FadeInMinigame);
             FadedToBlack = false;
             StartCoroutine(FadeToBlackAndOpaque());
         }
@@ -88,7 +89,7 @@ public class DisplayRankOrder : MonoBehaviour
         {
             while (FadeToBlackPanel.GetComponent<Image>().color.a > 0)
             {
-                FadeAmount = FadingColor.a - (FadingSpeed * Time.deltaTime);
+                FadeAmount = FadingColor.a - (FadeInMinigame * Time.deltaTime);
                 FadingColor = new Color(FadingColor.r, FadingColor.g, FadingColor.g, FadeAmount);
                 FadeToBlackPanel.GetComponent<Image>().color = FadingColor;
                 yield return null;
@@ -100,7 +101,7 @@ public class DisplayRankOrder : MonoBehaviour
     //This coroutine resets the Rank and Player list and loads the Start Scene.
     IEnumerator SceneSwitch()
     {
-        yield return new WaitForSeconds(FadingSpeed);
+        yield return new WaitForSeconds(DelayToMenu);
         //Resets the Player and Rank list.
         PlayerTotal.ResetList();
         RankPositionPlayer.ResetList();
