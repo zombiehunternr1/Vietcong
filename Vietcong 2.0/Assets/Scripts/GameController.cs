@@ -26,9 +26,10 @@ public class GameController : MonoBehaviour
             LastPlayer = PlayerTotal.PlayerList[0];
             //Displays the name of the last player that wins onscreen.
             DisplayerWinnerName.text = "Player " + LastPlayer.GetComponent<PlayerFinder>().PlayerInfo.ID + " Wins!"; 
-            //Disables the movement and sets the boolean IsRunning to false.
-            LastPlayer.GetComponent<Movement>()._canMove = false;
+            //Disables the movement and sets the boolean IsRunning to false.           
             LastPlayer.GetComponentInChildren<Animator>().SetBool("IsRunning", false);
+            LastPlayer.GetComponentInChildren<Animator>().SetBool("IsMud", false);
+            LastPlayer.GetComponent<Movement>()._canMove = false;
             //Adds the last standing player to the ranklist.
             RankPositionPlayer.RankList.Add(LastPlayer);
             //Reverses the list so the rankorder gets displayed from first to last place.

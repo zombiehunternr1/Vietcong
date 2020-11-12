@@ -38,7 +38,7 @@ public class Bounce : MonoBehaviour
 
     IEnumerator Delay(GameObject other)
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.4947f);
         Vector3 direction = (transform.position - other.transform.position).normalized;
         rb_Player.AddForce(direction * force, ForceMode.Impulse);
         yield return new WaitForSeconds(2.5f);

@@ -24,9 +24,13 @@ public class Killzone : MonoBehaviour
             other.GetComponentInChildren<Animator>().SetBool("IsRunning", false);
             //Sets the boolean Died to true in the animator.
             other.GetComponentInChildren<Animator>().SetBool("Died", true);
-            //Sends an alert to all listening game event listeners.
-            hit.PlayerHit();
-            KillzoneHit.Raise();
+            //Checks if the amount of players isn't equal to one else it fires of the events.
+            if(PlayerTotal.PlayerList.Count != 1)
+            {
+                //Sends an alert to all listening game event listeners.
+                hit.PlayerHit();
+                KillzoneHit.Raise();
+            }
         }
     }
 }
