@@ -12,6 +12,8 @@ public class Killzone : MonoBehaviour
         //Checks if its a player that hits the killzone area
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
         {
+            //Plays the dying sound effect once the player gets hit.
+            other.GetComponent<AudioSource>().Play();
             //Gets the component Hit Handler and stores it in the variable hit.
             HitHandler hit = other.GetComponent<HitHandler>();
             //Sets the _canMove boolean to false so the player can't move around while or after dying.

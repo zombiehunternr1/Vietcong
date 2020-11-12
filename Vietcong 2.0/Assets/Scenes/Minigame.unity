@@ -282,6 +282,84 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &27658076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27658077}
+  - component: {fileID: 27658079}
+  - component: {fileID: 27658078}
+  m_Layer: 5
+  m_Name: Winner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &27658077
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27658076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 644523426}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &27658078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27658076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.06914902, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 238
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &27658079
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27658076}
+  m_CullTransparentMesh: 0
 --- !u!114 &77572016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8026113445321071196, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
@@ -3477,6 +3555,7 @@ RectTransform:
   - {fileID: 2069013650}
   - {fileID: 390848935}
   - {fileID: 1780002014}
+  - {fileID: 27658077}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6451,7 +6530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeToBlackPanel: {fileID: 1780002014}
   FadedToBlack: 0
-  FadingSpeed: 3
+  FadeInMinigame: 5
+  DelayToMenu: 15
 --- !u!1001 &1447243254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11374,7 +11454,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11407,7 +11488,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11440,7 +11522,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11473,7 +11556,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11506,7 +11590,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11539,7 +11624,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -11572,7 +11658,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: 22d8ef5f2de1b0e4292b2b23ec0214da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -12084,7 +12171,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: c74153b9e2e760b40a1fda4968bafe77,
     type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -203655887218126122, guid: c74153b9e2e760b40a1fda4968bafe77, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -25166,6 +25254,11 @@ PrefabInstance:
       propertyPath: TManager
       value: 
       objectReference: {fileID: 1992241621}
+    - target: {fileID: 8026113445321071196, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
+        type: 3}
+      propertyPath: DisplayerWinnerName
+      value: 
+      objectReference: {fileID: 27658078}
     - target: {fileID: 8026113445321071197, guid: 04b5db36f1b3f1a4bbcbcb403db69e93,
         type: 3}
       propertyPath: m_LocalPosition.x

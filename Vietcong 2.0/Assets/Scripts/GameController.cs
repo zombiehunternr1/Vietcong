@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public float DelayResetCount;
     public DisplayRankOrder RankOrderScript;
     public SetupGame StopGame;
+    public Text DisplayerWinnerName;
+
+    private GameObject LastPlayer;
 
     //This function gets called everytime a player gets hit.
     public void EndGame()
@@ -19,9 +23,10 @@ public class GameController : MonoBehaviour
             //Calls the function StopGame to stop all the hazards.
             StopGame.StopGame();
             //Gets the last player in the list PlayerList and at it in the gameobject variable LastPlayer.
-            GameObject LastPlayer = PlayerTotal.PlayerList[0];
-            //Disables the name display above the player and the movement and sets the boolean IsRunning to false.
-            LastPlayer.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;
+            LastPlayer = PlayerTotal.PlayerList[0];
+            //Displays the name of the last player that wins onscreen.
+            DisplayerWinnerName.text = "Player " + LastPlayer.GetComponent<PlayerFinder>().PlayerInfo.ID + " Wins!"; 
+            //Disables the movement and sets the boolean IsRunning to false.
             LastPlayer.GetComponent<Movement>()._canMove = false;
             LastPlayer.GetComponentInChildren<Animator>().SetBool("IsRunning", false);
             //Adds the last standing player to the ranklist.
@@ -39,6 +44,10 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(DelayResetCount);
         //Calls the function DisplayRank to display the Rank order.
         RankOrderScript.DisplayRank();
+        //Disables the display name.
+        DisplayerWinnerName.enabled = false;
+        //Disables the name display above the last player standing.
+        LastPlayer.GetComponentInChildren<DisplayName>().PlayerNameText.enabled = false;
         yield return new WaitForSecondsRealtime(DelayResetCount);  
     }
 }
