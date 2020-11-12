@@ -70,13 +70,17 @@ public class Tile : MonoBehaviour
     private void OnCollisionStay(Collision other)
     { 
         //Check if the player collides with a tile that has been hit once. If so it adjusts the movementspeed of the player to a slower speed.
+        //Sets the animator boolean IsRunning to fals and sets the boolean IsMud to true. Once the player gets of the tile it sets the boolean IsMud back to false.
         if (PlayerTotal.PlayerList.Contains(other.gameObject) && IsHit == false)
         {
-            other.gameObject.GetComponent<Movement>().ChangeMovementSpeed(SlowSpeed);         
+            other.gameObject.GetComponent<Movement>().ChangeMovementSpeed(SlowSpeed);
+            other.gameObject.GetComponentInChildren<Animator>().SetBool("IsRunning", false);
+            other.gameObject.GetComponentInChildren<Animator>().SetBool("IsMud", true);
         }
         else
         {
             other.gameObject.GetComponent<Movement>().ChangeMovementSpeed();
+            other.gameObject.GetComponentInChildren<Animator>().SetBool("IsMud", false);
         }
     }
 }
