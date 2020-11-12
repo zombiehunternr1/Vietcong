@@ -105,7 +105,6 @@ public class DisplayRankOrder : MonoBehaviour
         //Resets the Player and Rank list.
         PlayerTotal.ResetList();
         RankPositionPlayer.ResetList();
-
         //Loads in the Start scene.
         SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
