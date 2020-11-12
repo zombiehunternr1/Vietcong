@@ -8,6 +8,7 @@ public class AirProjectile : MonoBehaviour
     public float PSpeed;
     private Rigidbody Rigid;
     public AudioSource MortarSource;
+    public GameObject ExplosionParticle;
 
     void Awake()
     {
@@ -25,5 +26,19 @@ public class AirProjectile : MonoBehaviour
         
         //Destroys the bullet after the length of the audioclip has been reached.
         Destroy(gameObject, MortarSource.clip.length);
+    }
+
+    //Checks if the object collides with another object that has the script Tile attached to itself. If so it gets it's own Meshrenderer component and disables it.
+    //Instanciates the explosion effect on the location where the object collided with the object that has the script Tile attached ot itself and stores it in the variable TempExplosionEffect.
+    //Then it destroys the effect that is stored in the TempExplosionEffect variable after the duration has finished.
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<Tile>())
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+            var TempExplosionEffect = Instantiate(ExplosionParticle, transform.localPosition + (Vector3.up * 5f), transform.rotation);
+            Destroy(TempExplosionEffect, ExplosionParticle.GetComponent<ParticleSystem>().main.duration);
+            
+        }
     }
 }
