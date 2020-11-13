@@ -1,42 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Projectileshooter : MonoBehaviour
 {
     public GameObject Projectile;
     public Transform ProjectileShooterPosition;
-    private Color COrange = new Color32(254, 161, 0, 1);
+    public bool CanFire = false;
     private float NextFire;
     private float FirstShoot = 5;
     private float SecondShoot = 16;
-    private Material PrepToFireColor;
-    private Renderer[] PSchilds; 
+    private Animator[] AnimControllers;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Gets the material from the projectile.
-        PrepToFireColor = GetComponent<Renderer>().material;
-        //Gets the renderer component from all the children in the projectileshooter.
-        PSchilds = GetComponentsInChildren<Renderer>();
+        //Gets all the animator controller in the children objects and stores them in the variable array AnimControllers.
+        AnimControllers = GetComponentsInChildren<Animator>();
 
-        //Loops over every childcomponent that has a renderer attachted to it in the array PSchilds.
-        foreach(Renderer rend in PSchilds)
-        {
-            //Creat a new variable called mat to store the materials from each child in the array.
-            var mat = new Material[rend.materials.Length];
-            //Keeps looping until i is no longer smaller then the length of the variable rend.
-            for(var i = 0; i < rend.materials.Length; i++)
-            {
-                //Sets the indivitual material that is stored in the array to the parent material.
-                mat[i] = PrepToFireColor;
-            }
-            //set the child compontent materials to that of the variable mat materials.
-            rend.materials = mat;
-        }
-
-        //Start coroutine to create a projectile and fire it.
+        //Starts the coroutine CreateProjectile.
         StartCoroutine(CreateProjectile());
     }
 
@@ -44,35 +27,66 @@ public class Projectileshooter : MonoBehaviour
     IEnumerator CreateProjectile()
     {
         //Keeps looping infinitely
-        while(true)
+        while (true)
         {
-            //Sets the nextfire float based on a random number it generates from the floats FirstShoot and SecondShoot.
-            NextFire = Random.Range(FirstShoot, SecondShoot);
+            //Checks if the boolean CanFire is true. If so it continues executing the rest of the code. If not it returns null.
+            if (CanFire)
+            {
+                //Sets the nextfire float based on a random number it generates from the floats FirstShoot and SecondShoot.
+                NextFire = UnityEngine.Random.Range(FirstShoot, SecondShoot);
 
-            //Waits the amount of seconds that variable NextFire holds minus 2 before continuing the code.
-            yield return new WaitForSeconds(NextFire - 2);
-            //Change the projectile shooter to the color orange.
-            PrepToFireColor.color = COrange;
+                //Waits the amount of seconds that variable NextFire holds minus 2 before continuing the code.
+                yield return new WaitForSeconds(NextFire - 2);
 
-            //Waits 1 second before continuing with the code.
-            yield return new WaitForSeconds(1);
-            //Change the projectile shooter to the color red.
-            PrepToFireColor.color = Color.red;
+                //Goes over each AnimController in the array AnimControllers.
+                foreach (Animator AnimController in AnimControllers)
+                {
+                    //Resets the Idle trigger and sets the TakeAim trigger.
+                    AnimController.ResetTrigger("Idle");
+                    AnimController.SetTrigger("TakeAim");
+                }
 
-            //Waits 1 second before firing the projectile.
-            yield return new WaitForSeconds(1);
-            //runs the funtion that creates the projectile.
-            ShootProjectile();
-            //Changes the color back to white to visually reset the projectileshooter.
-            PrepToFireColor.color = Color.white;
+                //Waits 1 second before continuing with the code.
+                yield return new WaitForSeconds(1);
 
-            //Returns a null variable so it doesn't effect the framerate and fills up the memory.
-            yield return null;         
-        }
+                //Goes over each AnimController in the array AnimControllers.
+                foreach (Animator AnimController in AnimControllers)
+                {
+                    //Resets the TakeAim trigger and sets the fire trigger
+                    AnimController.ResetTrigger("TakeAim");
+                    AnimController.SetTrigger("Fire");
+                }
+
+                //Waits 1 second before firing the projectile.
+                yield return new WaitForSeconds(0.5f);
+                //runs the funtion that creates the projectile.
+                ShootProjectile();
+
+                //Goes over each AnimController in the array AnimControllers.
+                foreach (Animator AnimController in AnimControllers)
+                {
+                    //Resets the fire trigger and sets the reload trigger.
+                    AnimController.ResetTrigger("Fire");
+                    AnimController.SetTrigger("Reload");
+                }
+
+                //Waits 2.5 seconds before continuing the code.
+                yield return new WaitForSeconds(2.5f);
+
+                //Goes over each AnimController in the array AnimControllers.
+                foreach (Animator AnimController in AnimControllers)
+                {
+                    //Resets the Reload trigger and sets the Idle trigger.
+                    AnimController.ResetTrigger("Reload");
+                    AnimController.SetTrigger("Idle");
+                }
+            }
+            yield return null;
+        }     
     }
 
     void ShootProjectile()
     {
-        Instantiate(Projectile, ProjectileShooterPosition.position, ProjectileShooterPosition.rotation);
+        Instantiate(Projectile, ProjectileShooterPosition.position + (Vector3.up * 2f), ProjectileShooterPosition.rotation);
     }
 }

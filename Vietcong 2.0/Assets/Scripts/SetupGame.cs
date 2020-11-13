@@ -108,10 +108,12 @@ public class SetupGame : MonoBehaviour
                 TileManagerScript.enabled = true;
             }
             //Checks if the item in the HazardList has the Projectileshooter script attached to itself, if so add the item to the variable ProjectileShooterScript and enables the script.
+            //and sets the booelan CanFire to true.
             if (hazard.GetComponent<Projectileshooter>())
             {
                 ProjectileShooterScript = hazard.GetComponent<Projectileshooter>();
                 ProjectileShooterScript.enabled = true;
+                ProjectileShooterScript.CanFire = true;
             }
         }
     }
