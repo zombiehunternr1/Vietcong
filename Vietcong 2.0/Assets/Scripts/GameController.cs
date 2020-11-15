@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
         //Checks if the playerlist is equal to 1.
         if (PlayerTotal.PlayerList.Count == 1)
         {
+            //Sets the bool AllowHit to false.
+            DisableHit.AllowHit = false;
             //Calls the function StopGame to stop all the hazards.
             StopGame.StopGame();
             //Gets the last player in the list PlayerList and at it in the gameobject variable LastPlayer.
@@ -31,7 +33,6 @@ public class GameController : MonoBehaviour
             LastPlayer.GetComponentInChildren<Animator>().SetBool("IsRunning", false);
             LastPlayer.GetComponentInChildren<Animator>().SetBool("IsMud", false);
             LastPlayer.GetComponent<Movement>()._canMove = false;
-            DisableHit.AllowHit = false;
             
             //Adds the last standing player to the ranklist.
             RankPositionPlayer.RankList.Add(LastPlayer);
