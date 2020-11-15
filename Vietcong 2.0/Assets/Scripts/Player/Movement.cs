@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public bool _canMove;
+    public bool _hitSpike;
     public float _normalSpeed;
+    public AudioSource Shot;
+    public AudioSource Speared;
     private float _moveSpeed; 
     private Rigidbody rb;
     private Vector2 inputValue;
@@ -15,6 +18,7 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
+        _hitSpike = false;
         _moveSpeed = _normalSpeed;
         rb = GetComponent<Rigidbody>();
         handler = GetComponent<StateHandler>();
@@ -89,10 +93,11 @@ public class Movement : MonoBehaviour
         inputValue = val.Get<Vector2>();
     }
 
-    //This coroutine sets the _canMove boolean to false after half a second.
+    //This coroutine sets the _hitSpike to true and the _canMove boolean to false after half a second later.
     //Sets the IsFalling bool to false and sets the IsFlat bool to true.
     IEnumerator DisableMovement()
     {
+        _hitSpike = true;
         yield return new WaitForSeconds(0.5f);
         _canMove = false;
         animController.SetBool("IsFalling", false);

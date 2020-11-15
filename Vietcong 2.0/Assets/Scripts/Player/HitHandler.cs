@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitHandler : MonoBehaviour
 {
     private DisplayName NameDisplay;
+    public GameObject BloodEffect;
 
     void Awake()
     {
