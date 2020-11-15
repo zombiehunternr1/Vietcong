@@ -68,6 +68,14 @@ public class Movement : MonoBehaviour
                 {
                     direction.y = 0;
                 }
+                //Checks if the player is falling down. If so it sets the IsRunning and IsBounce to false, sets the bool IsFalling to true and starts the coroutine DisableMovement.
+                if(transform.position.y < 1.25)
+                {
+                    animController.SetBool("IsRunning", false);
+                    animController.SetBool("IsBounce", false);
+                    animController.SetBool("IsFalling", true);
+                    StartCoroutine(DisableMovement());
+                }
             }
             else
             {
@@ -79,5 +87,15 @@ public class Movement : MonoBehaviour
     private void OnMovement(InputValue val)
     {
         inputValue = val.Get<Vector2>();
+    }
+
+    //This coroutine sets the _canMove boolean to false after half a second.
+    //Sets the IsFalling bool to false and sets the IsFlat bool to true.
+    IEnumerator DisableMovement()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _canMove = false;
+        animController.SetBool("IsFalling", false);
+        animController.SetBool("IsFlat", true);
     }
 }

@@ -7,6 +7,7 @@ public class TileManager : MonoBehaviour
     private List<Transform> TileList = new List<Transform>();
     public float MinRanVal;
     public float MaxRanVal;
+    private Transform LastTileDrop;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,9 @@ public class TileManager : MonoBehaviour
             }
             //Removes the first tile in the array because this is the parent tile. This tile must not be removed else the code will break.
             TileList.RemoveAt(0);
+            //Gets the first position in the tilelist and stores it in the transform variable LastTileDrop.
+            LastTileDrop = TileList[0];
+
             //Starts the coroutine that makes the tiles drop overtime.
             StartCoroutine(DropTile());
         }       
@@ -38,17 +42,24 @@ public class TileManager : MonoBehaviour
             while (TileList.Count > 0)
             {
                 //Gets a random tile from the TileList and puts it in the variable DTile.
-                var DropThisTile = TileList[Random.Range(0, TileList.Count)];
-                //Waits with executing the rest of the function until the random range time has passed.
-                yield return new WaitForSeconds(Random.Range(MinRanVal, MaxRanVal));
-                //Starts the coroutine that drops the single selected tile.
-                StartCoroutine(DropThisTile.GetComponent<Tile>().DroppingThisTile());
-                //Checks if the boolean IsHit equal to false.
-                if (DropThisTile.GetComponent<Tile>().IsHit == false)
+                var DropThisTile = TileList[Random.Range(0, TileList.Count)];  
+
+                //Checks if the last tile isn't equal to the tile that has been selected. If not it executes the code ferther.
+                if(LastTileDrop != DropThisTile)
                 {
-                    //Removes the tile that is stored in the variable DTile from the list TileList.
-                    TileList.Remove(DropThisTile);
-                }
+                    //Waits with executing the rest of the function until the random range time has passed.
+                    yield return new WaitForSeconds(Random.Range(MinRanVal, MaxRanVal));
+                    //Starts the coroutine that drops the single selected tile.
+                    StartCoroutine(DropThisTile.GetComponent<Tile>().DroppingThisTile());
+                    LastTileDrop = DropThisTile;
+
+                    //Checks if the boolean IsHit equal to false.
+                    if (DropThisTile.GetComponent<Tile>().IsHit == false)
+                    {
+                        //Removes the tile that is stored in the variable DTile from the list TileList.
+                        TileList.Remove(DropThisTile);
+                    }
+                }      
             }
         }
     }
