@@ -2,7 +2,7 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Vietcong",
+            "name": "Minigame",
             "id": "f06e5dc7-547a-4f16-aabc-270f926ac71c",
             "actions": [
                 {
@@ -10,22 +10,6 @@
                     "type": "Value",
                     "id": "967d3d5a-a4c3-478f-b5cd-6c2b7cf7fce6",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Reset",
-                    "type": "Value",
-                    "id": "ff4975bb-f8b7-4d77-adf2-51913630b108",
-                    "expectedControlType": "Key",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "ReadyGame",
-                    "type": "Button",
-                    "id": "6775234e-9c01-4296-8d8d-1efcd4268d78",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -41,81 +25,88 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "21b2df99-46d4-4982-bdf1-a63ad2d56cba",
+            "actions": [
+                {
+                    "name": "ReadyPlayer",
+                    "type": "Button",
+                    "id": "18e777e6-ab5d-4ba1-9509-ba12c4ca1348",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 },
                 {
-                    "name": "WASD",
-                    "id": "e7dc4e77-25f8-45c1-a07b-ffee6be11800",
-                    "path": "2DVector",
-                    "interactions": "",
+                    "name": "IncreasePlayerAmount",
+                    "type": "Button",
+                    "id": "01230db3-df9b-4c4d-ac9f-dfc59a2e9a0e",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
+                    "interactions": ""
                 },
                 {
-                    "name": "up",
-                    "id": "3c1a55f7-6d8d-4c37-89a3-449d40a451f7",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
+                    "name": "DecreasePlayerAmount",
+                    "type": "Button",
+                    "id": "437b9ec1-4cf4-46f2-a18c-38af165769fd",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "interactions": ""
                 },
                 {
-                    "name": "down",
-                    "id": "f188c642-99a7-4f1a-88dd-cff4bae17017",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "aa71956e-1841-43ce-ab5c-8fc8c1b736ae",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "9b20b488-974b-47a4-9e40-b18dd23da39a",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "33864aa8-408e-4d84-af9c-4d3695de9b4e",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "ad3cfd91-64df-4521-96ff-3ca8810ae76d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Reset",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49d047e4-0669-4121-9833-887b31ecda07",
+                    "id": "66e0f3ac-520b-40ed-a128-9650599eeb1e",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "Press",
                     "processors": "",
+                    "groups": "Controller",
+                    "action": "ReadyPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0425700b-44f8-4b86-8eee-dafafd37f33b",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "IncreasePlayerAmount",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5006bc7-883a-4e23-ab1a-41860e0adee0",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DecreasePlayerAmount",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fe59b81-93f8-4951-89d8-8fdfad7228d8",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
-                    "action": "ReadyGame",
+                    "action": "Test",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -123,17 +114,6 @@
         }
     ],
     "controlSchemes": [
-        {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
         {
             "name": "Controller",
             "bindingGroup": "Controller",
