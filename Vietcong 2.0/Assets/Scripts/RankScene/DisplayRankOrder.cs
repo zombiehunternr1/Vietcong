@@ -80,7 +80,7 @@ public class DisplayRankOrder : MonoBehaviour
                 SortedList[i].GetComponentInChildren<PlayerRank>().PositionNumber.gameObject.SetActive(true);
                 SortedList[i].gameObject.SetActive(true);
                 i++;
-            }           
+            }      
             yield return new WaitForSeconds(FadeInMinigame);
             FadedToBlack = false;
             StartCoroutine(FadeToBlackAndOpaque());

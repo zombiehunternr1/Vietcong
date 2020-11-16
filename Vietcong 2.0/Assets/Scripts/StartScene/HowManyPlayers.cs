@@ -116,13 +116,12 @@ public class HowManyPlayers : MonoBehaviour
     //change the displayed txt by adding one player
     void IncreasePlayers()
     {
-        Debug.Log(HowManyActivePlayers);
         if (HowManyActivePlayers < 8)
         {
             HowManyActivePlayers++;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
         }
-        if(HowManyActivePlayers > 8)
+        if(HowManyActivePlayers == 8)
         {
             HowManyActivePlayers = 2;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
@@ -137,7 +136,7 @@ public class HowManyPlayers : MonoBehaviour
             HowManyActivePlayers--;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
         }
-        if (HowManyActivePlayers < 2)
+        if (HowManyActivePlayers == 2)
         {
             HowManyActivePlayers = 8;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
