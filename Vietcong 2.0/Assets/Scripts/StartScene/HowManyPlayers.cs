@@ -12,7 +12,7 @@ public class HowManyPlayers : MonoBehaviour
     private int FadingSpeed = 1;
 
     //the public value that defines how many players are in the game
-    public static int HowManyActivePlayers;
+    public static int HowManyActivePlayers = 2;
     //the displayed text about how much players are in the game
     public Text HowmuchPlayersTXT;
 
@@ -41,12 +41,7 @@ public class HowManyPlayers : MonoBehaviour
         SelectPlayerAmountSound = SelectSource.clip;
         //Gets the audio source component and stores it in the variable StartSource.
         StartSound = StartSource.clip;
-
-        //Checks if the int HowManyActivePlayers is 0. If that is true it sets it to 2 and displays it on the screen.
-        if (HowManyActivePlayers == 0)
-        {
-            HowManyActivePlayers = 2;
-        }
+        //Displays the amount of active players on the screen.
         HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
     }
 
@@ -66,16 +61,16 @@ public class HowManyPlayers : MonoBehaviour
             {
                 //Calls the function to increase the player amount, plays the soundeffect and sets the bool AllowInput to false;
                 SelectSource.PlayOneShot(SelectPlayerAmountSound, 0.7f);
-                OnDecreasePlayerAmount();
                 AllowInput = false;
+                OnDecreasePlayerAmount();              
             }
             //Checks if the right D-Pad has been pressed.
             if (DPadInput.right)
             {
                 //Calls the function to decrease the player amount, plays the soundeffect and sets the bool AllowInput to false;
                 SelectSource.PlayOneShot(SelectPlayerAmountSound, 0.7f);
-                OnIncreasePlayerAmount();
                 AllowInput = false;
+                OnIncreasePlayerAmount();          
             }
         }
         //Checks if the value DelayAllowInput is smaller then 0.1. If that is true it means the Delay is over and the player is allowed to press the D-Pad buttons again.
@@ -121,7 +116,7 @@ public class HowManyPlayers : MonoBehaviour
             HowManyActivePlayers++;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
         }
-        if(HowManyActivePlayers == 8)
+        else if (HowManyActivePlayers >= 8)
         {
             HowManyActivePlayers = 2;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
@@ -136,7 +131,7 @@ public class HowManyPlayers : MonoBehaviour
             HowManyActivePlayers--;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
         }
-        if (HowManyActivePlayers == 2)
+        else if (HowManyActivePlayers <= 2)
         {
             HowManyActivePlayers = 8;
             HowmuchPlayersTXT.text = HowManyActivePlayers + " Players";
