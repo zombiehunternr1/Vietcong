@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @PlayerInputActions : IInputActionCollection, IDisposable
+public class @PlayerInputAction : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerInputActions()
+    public @PlayerInputAction()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInput"",
@@ -68,6 +68,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Test"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa71956e-1841-43ce-ab5c-8fc8c1b736ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -103,6 +111,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""DecreasePlayerAmount"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fe59b81-93f8-4951-89d8-8fdfad7228d8"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -129,6 +148,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_UI_ReadyPlayer = m_UI.FindAction("ReadyPlayer", throwIfNotFound: true);
         m_UI_IncreasePlayerAmount = m_UI.FindAction("IncreasePlayerAmount", throwIfNotFound: true);
         m_UI_DecreasePlayerAmount = m_UI.FindAction("DecreasePlayerAmount", throwIfNotFound: true);
+        m_UI_Test = m_UI.FindAction("Test", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -181,8 +201,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Minigame_Movement;
     public struct MinigameActions
     {
-        private @PlayerInputActions m_Wrapper;
-        public MinigameActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInputAction m_Wrapper;
+        public MinigameActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Minigame_Movement;
         public InputActionMap Get() { return m_Wrapper.m_Minigame; }
         public void Enable() { Get().Enable(); }
@@ -214,13 +234,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_ReadyPlayer;
     private readonly InputAction m_UI_IncreasePlayerAmount;
     private readonly InputAction m_UI_DecreasePlayerAmount;
+    private readonly InputAction m_UI_Test;
     public struct UIActions
     {
-        private @PlayerInputActions m_Wrapper;
-        public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInputAction m_Wrapper;
+        public UIActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @ReadyPlayer => m_Wrapper.m_UI_ReadyPlayer;
         public InputAction @IncreasePlayerAmount => m_Wrapper.m_UI_IncreasePlayerAmount;
         public InputAction @DecreasePlayerAmount => m_Wrapper.m_UI_DecreasePlayerAmount;
+        public InputAction @Test => m_Wrapper.m_UI_Test;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -239,6 +261,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @DecreasePlayerAmount.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
                 @DecreasePlayerAmount.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
                 @DecreasePlayerAmount.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDecreasePlayerAmount;
+                @Test.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTest;
+                @Test.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTest;
+                @Test.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTest;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -252,6 +277,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @DecreasePlayerAmount.started += instance.OnDecreasePlayerAmount;
                 @DecreasePlayerAmount.performed += instance.OnDecreasePlayerAmount;
                 @DecreasePlayerAmount.canceled += instance.OnDecreasePlayerAmount;
+                @Test.started += instance.OnTest;
+                @Test.performed += instance.OnTest;
+                @Test.canceled += instance.OnTest;
             }
         }
     }
@@ -274,5 +302,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnReadyPlayer(InputAction.CallbackContext context);
         void OnIncreasePlayerAmount(InputAction.CallbackContext context);
         void OnDecreasePlayerAmount(InputAction.CallbackContext context);
+        void OnTest(InputAction.CallbackContext context);
     }
 }

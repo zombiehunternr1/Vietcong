@@ -34,4 +34,12 @@ public class PlayerReady : MonoBehaviour
             ReadyList.CheckAllPlayersReady();     
         }
     }
+
+
+    //TESTING ONLY!!! REMOVE AT FINAL RELEASE!!!
+    private void OnTest()
+    {
+        Input.SwitchCurrentActionMap("Minigame");
+        ReadyList.SoloPlay();
+    }
 }

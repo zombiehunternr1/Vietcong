@@ -76,4 +76,10 @@ public class PlayerReadyList : MonoBehaviour
             }
         }      
     }
+
+    //TEST ONLY!! REMOVE AT FINAL BUILD!!
+    public void SoloPlay()
+    {
+        StartGame.ReadyGame();
+    }
 }
