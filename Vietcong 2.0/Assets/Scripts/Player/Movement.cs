@@ -68,15 +68,16 @@ public class Movement : MonoBehaviour
                     transform.forward = facingrotation;
                 }
                 //To prevent players from climbing up.
-                if (direction.y > 0)
+                if (direction.y > 1.26)
                 {
-                    direction.y = 0;
+                    direction.y = 1.25f;
                 }
-                //Checks if the player is falling down. If so it sets the IsRunning and IsBounce to false, sets the bool IsFalling to true and starts the coroutine DisableMovement.
-                if(transform.position.y < 1.25)
+                //Checks if the player is falling down. If so it sets the IsRunning, IsBounce and IsMud to false, sets the bool IsFalling to true and starts the coroutine DisableMovement.
+                if(transform.position.y < 1.249)
                 {
                     animController.SetBool("IsRunning", false);
                     animController.SetBool("IsBounce", false);
+                    animController.SetBool("IsMud", false);
                     animController.SetBool("IsFalling", true);
                     StartCoroutine(DisableMovement());
                 }
@@ -97,7 +98,9 @@ public class Movement : MonoBehaviour
     //Sets the IsFalling bool to false and sets the IsFlat bool to true.
     IEnumerator DisableMovement()
     {
+        rb.detectCollisions = false;
         _hitSpike = true;
+        rb.detectCollisions = true;
         yield return new WaitForSeconds(0.5f);
         _canMove = false;
         animController.SetBool("IsFalling", false);
