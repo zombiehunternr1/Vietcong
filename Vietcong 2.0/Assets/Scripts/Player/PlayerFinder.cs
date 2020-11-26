@@ -11,8 +11,6 @@ public class PlayerFinder : MonoBehaviour
     {
         //Gets the player color from the scriptable object and places it on the material of the player.
         PlayerMaterial = PlayerInfo.PlayerColor;
-        GetComponent<Renderer>().material = PlayerMaterial;
-        //Adds player to the totalplayer list if this script is attached to a player.
-        PlayerTotal.AddPlayer(gameObject);
+        GetComponentInChildren<Renderer>().material = PlayerMaterial;
     }
 }

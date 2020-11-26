@@ -24,7 +24,7 @@ public class Projectileshooter : MonoBehaviour
     }
 
     //Coroutine that creates the new projectile.
-    IEnumerator CreateProjectile()
+    public IEnumerator CreateProjectile()
     {
         //Keeps looping infinitely
         while (true)
@@ -56,11 +56,11 @@ public class Projectileshooter : MonoBehaviour
                     AnimController.ResetTrigger("TakeAim");
                     AnimController.SetTrigger("Fire");
                 }
-
-                //Waits 1 second before firing the projectile.
-                yield return new WaitForSeconds(0.5f);
                 //runs the funtion that creates the projectile.
                 ShootProjectile();
+
+                //Waits half a second before firing the projectile.
+                yield return new WaitForSeconds(0.5f);
 
                 //Goes over each AnimController in the array AnimControllers.
                 foreach (Animator AnimController in AnimControllers)

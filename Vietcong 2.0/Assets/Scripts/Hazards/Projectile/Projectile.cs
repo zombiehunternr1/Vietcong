@@ -26,10 +26,12 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Checks if the projectile hits a player. If so it destorys the object.
+        //Checks if the projectile hits a player. If so it plays the dying sound effect and disables the object.
         if (PlayerTotal.PlayerList.Contains(other.gameObject))
-        {                
-            Destroy(gameObject);
+        {
+            other.GetComponent<AudioSource>().Play();
+            gameObject.SetActive(false);
+      
         }
     }
 }

@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public bool _canMove;
+    public bool _hitSpike;
     public float _normalSpeed;
+    public AudioSource Shot;
+    public AudioSource Speared;
     private float _moveSpeed; 
     private Rigidbody rb;
     private Vector2 inputValue;
@@ -15,6 +18,7 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
+        _hitSpike = false;
         _moveSpeed = _normalSpeed;
         rb = GetComponent<Rigidbody>();
         handler = GetComponent<StateHandler>();
@@ -64,9 +68,18 @@ public class Movement : MonoBehaviour
                     transform.forward = facingrotation;
                 }
                 //To prevent players from climbing up.
-                if (direction.y > 0)
+                if (direction.y > 1.26)
                 {
-                    direction.y = 0;
+                    direction.y = 1.25f;
+                }
+                //Checks if the player is falling down. If so it sets the IsRunning, IsBounce and IsMud to false, sets the bool IsFalling to true and starts the coroutine DisableMovement.
+                if(transform.position.y < 1.249)
+                {
+                    animController.SetBool("IsRunning", false);
+                    animController.SetBool("IsBounce", false);
+                    animController.SetBool("IsMud", false);
+                    animController.SetBool("IsFalling", true);
+                    StartCoroutine(DisableMovement());
                 }
             }
             else
@@ -79,5 +92,18 @@ public class Movement : MonoBehaviour
     private void OnMovement(InputValue val)
     {
         inputValue = val.Get<Vector2>();
+    }
+
+    //This coroutine sets the _hitSpike to true and the _canMove boolean to false after half a second later.
+    //Sets the IsFalling bool to false and sets the IsFlat bool to true.
+    IEnumerator DisableMovement()
+    {
+        rb.detectCollisions = false;
+        _hitSpike = true;
+        rb.detectCollisions = true;
+        yield return new WaitForSeconds(0.5f);
+        _canMove = false;
+        animController.SetBool("IsFalling", false);
+        animController.SetBool("IsFlat", true);
     }
 }

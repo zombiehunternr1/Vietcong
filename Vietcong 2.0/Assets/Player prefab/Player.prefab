@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7401655955913192335}
   - component: {fileID: 7401655955913192334}
   - component: {fileID: 4112011642534020642}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Bounce
   m_TagString: bounce
   m_Icon: {fileID: 0}

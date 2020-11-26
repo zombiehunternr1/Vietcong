@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitHandler : MonoBehaviour
 {
     private DisplayName NameDisplay;
+    public GameObject BloodEffect;
 
     void Awake()
     {
@@ -15,7 +16,7 @@ public class HitHandler : MonoBehaviour
     //This function adds the player to the ranking list and removes it from the player list.
     void AssignRank()
     {
-        RankPosition.RankList.Add(gameObject);
+        RankPositionPlayer.RankList.Add(gameObject);
         PlayerTotal.RemovePlayer(gameObject);
     }
 
