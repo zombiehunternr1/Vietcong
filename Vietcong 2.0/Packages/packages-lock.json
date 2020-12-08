@@ -8,7 +8,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
-      "version": "1.0.0",
+      "version": "1.0.5",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -24,7 +24,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.vscode": {
-      "version": "1.2.2",
+      "version": "1.2.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -54,11 +54,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.lightweight": {
-      "version": "7.1.8",
+      "version": "7.3.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.render-pipelines.universal": "7.1.8",
+        "com.unity.render-pipelines.universal": "7.3.1",
         "com.unity.postprocessing": "2.1.7"
       },
       "url": "https://packages.unity.com"
@@ -75,7 +75,7 @@
     },
     "com.unity.shadergraph": {
       "version": "7.3.1",
-      "depth": 2,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.render-pipelines.core": "7.3.1"
@@ -83,11 +83,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.18",
+      "version": "1.1.19",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.0",
+        "com.unity.ext.nunit": "1.0.5",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
