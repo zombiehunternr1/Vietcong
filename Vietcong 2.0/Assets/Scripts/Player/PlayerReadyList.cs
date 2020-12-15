@@ -12,6 +12,7 @@ public class PlayerReadyList : MonoBehaviour
     public SetupGame StartGame;
 
     private List<Text> ReadyText = new List<Text>();
+    private List<Image> Background = new List<Image>();
     private int ActivePlayers = HowManyPlayers.HowManyActivePlayers;
 
     int PlayerBool;
@@ -26,28 +27,40 @@ public class PlayerReadyList : MonoBehaviour
         ReadySource = GetComponent<AudioSource>();
         PlayerReady = ReadySource.clip;
 
+        //Gets all the elements that have the image component attached to them and stores them in the array TempBackground.
+        Image[] TempBackground = GetComponentsInChildren<Image>();
+        //Gets all the elements that have the Text component attached to them and stores them in the array TempText.
         Text[] TempText = GetComponentsInChildren<Text>();
 
-        //Gets all the text elements and stores them in the list ReadyText that doesn't have the script PlayerReady attached to itself.
+        //Goes over each text elements in the TempText array and stores them in the list ReadyText that does have the script PlayerReady attached to itself.
         //After that we disable the object.
         foreach (Text PlayerText in TempText)
         {
-            if (!PlayerText.GetComponent<PlayerReady>())
+            if (PlayerText.GetComponent<PlayerReady>())
             {
                 ReadyText.Add(PlayerText);
                 PlayerText.gameObject.SetActive(false);
             }
         }
+        //Goes over each image element and adds it to the list ReadyBackground, afterwards it disables the the object.
+        foreach(Image ReadyBackground in TempBackground)
+        {
+            Background.Add(ReadyBackground);
+            ReadyBackground.gameObject.SetActive(false);
+        }
 
-        //Get all the items in the ReadyText list and order the gameobjects by name, set them in a list and store this list in the variable SortedList.
-        var SortedList = ReadyText.OrderBy(go => go.name).ToList();
+        //Get all the items in the ReadyText list and order the gameobjects by name, set them in a list and store this list in the variable SortedPlayers.
+        var SortedPlayers = ReadyText.OrderBy(go => go.name).ToList();
+        //Get all the items in the ReadyText list and order the gameobjects by name, set them in a list and store this list in the variable SortedBackground.
+        var SortedBackground = Background.OrderBy(go => go.name).ToList();
 
-        //Sets the amount of players active according to the amount of active players that is stored in the variable SortedList.
-        //Enables the nameDiplay above the player.
+        //Sets the amount of players active according to the amount of active players that is stored in the variable SortedPlayers and SortedBackground.
+        //Enables the nameDiplay above the player and the background.
         for (int i = 0; i < ActivePlayers; i++)
         {
-            SortedList[i].gameObject.SetActive(true);
-            SortedList[i].GetComponentInChildren<PlayerReady>().ReadyUI.enabled = true;
+            SortedPlayers[i].gameObject.SetActive(true);
+            SortedPlayers[i].GetComponentInChildren<PlayerReady>().ReadyUI.enabled = true;
+            SortedBackground[i].gameObject.SetActive(true);
         }
     }
 
