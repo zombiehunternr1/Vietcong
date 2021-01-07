@@ -124,7 +124,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
+<<<<<<< HEAD
   bundleVersion: 0.8.3
+=======
+  bundleVersion: 0.8.4
+>>>>>>> Development
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
